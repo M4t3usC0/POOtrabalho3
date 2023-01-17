@@ -1,7 +1,7 @@
-package exceptions.notafiscal;
+package src.exceptions.notafiscal;
 
 /**
- * A classe AddProdutoException é responsável por exibir uma mensagem de erro caso não seja possível adicionar um produto. 
+ * A classe NotaFiscalNotFoundException é responsável por exibir uma mensagem de erro caso não seja possível adicionar um produto. 
  * @author Mateus, Maurício, Ricardo, Tales
  * @since jan 2023
  * @version 1.0
@@ -9,7 +9,7 @@ package exceptions.notafiscal;
 public class NotaFiscalNotFoundException extends IllegalArgumentException {
 
     /**
-     * Construtor da classe AddProdutoException
+     * Construtor da classe NotaFiscalNotFoundException
      * @param message Mensagem de erro
      */
     public NotaFiscalNotFoundException(String message) {
