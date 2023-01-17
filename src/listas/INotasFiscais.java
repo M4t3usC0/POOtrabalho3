@@ -1,4 +1,8 @@
-package src;
+package listas;
+
+import baseclasse.Item;
+import baseclasse.NotaFiscal;
+
 /**
  * Interface que especifica os métodos míninos para manipular uma coleção de notas fiscais.
  * @author Aline

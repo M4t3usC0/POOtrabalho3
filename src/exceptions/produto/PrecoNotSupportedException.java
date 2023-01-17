@@ -1,4 +1,4 @@
-package Exceptions;
+package exceptions.produto;
 
 /**
  * A classe AddProdutoException é responsável por exibir uma mensagem de erro caso não seja possível adicionar um produto. 
@@ -6,13 +6,13 @@ package Exceptions;
  * @since jan 2023
  * @version 1.0
  */
-public class AddProdutoException extends IllegalArgumentException {
+public class PrecoNotSupportedException extends IllegalArgumentException {
 
     /**
      * Construtor da classe AddProdutoException
      * @param message Mensagem de erro
      */
-    public AddProdutoException(String message) {
+    public PrecoNotSupportedException(String message) {
         super(message);
     }
 }

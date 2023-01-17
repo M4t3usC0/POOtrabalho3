@@ -1,4 +1,7 @@
-package src;
+package listas;
+
+import baseclasse.Produto;
+
 /**
  * Interface que especifica os métodos míninos para manipular uma coleção de produtos
  * @author Aline
