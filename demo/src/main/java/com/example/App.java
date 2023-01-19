@@ -1,32 +1,28 @@
 package com.example;
 
-import java.util.ArrayList;
-
 import com.example.baseclasse.*;
-import com.example.listas.*;
 
 public class App {
     public static void main(String[] args) {
 
-        System.out.println("INICIO MAIN");
+        String nome = "Arroz";
+        double preco = 10.00;
+        double quantidade = 5.0;
+        String descricao = "Arroz Branco";
 
-        Produto p = new Produto(1, "Produto 1", 10.0, 2);
+        ProdutoUnidade produtoUnidade2 = new ProdutoUnidade("Feijão", 5.00, 5, "Feijão Preto");
+        System.out.println(produtoUnidade2.getCodigo());
 
-        ListaProdutos lista = new ListaProdutos(new ArrayList<Produto>());
-
-        System.out.println("ADD PRODUTO");
         try {
-            lista.addProduto(p);
+            ProdutoUnidade produtoUnidade = new ProdutoUnidade(nome, preco, quantidade, descricao);
+            System.out.println(produtoUnidade.toString());
+            System.out.println(produtoUnidade.getCodigo());
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
 
-        System.out.println("Teste Nulo");
-        try {
-            lista.addProduto(null);
-        } catch (Exception e) {
-            System.out.println("Deu nulo");
-        }
+        ProdutoUnidade produtoUnidade3 = new ProdutoUnidade("Feijão", 5.00, 5, "Feijão Preto");
+        System.out.println(produtoUnidade3.getCodigo());
 
     }
 }

@@ -10,6 +10,7 @@ import com.example.exceptions.produto.ProdutoNotFoundException;
 import com.example.exceptions.produto.QuantidadeNotSupportedException;
 import com.example.exceptions.produto.RemoveProdutoException;
 import com.example.exceptions.produto.SubQuantidadeNotSupportedException;
+import com.example.baseclasse.ProdutoUnidade;
 
 
 public class ListaProdutos implements IProdutos {
@@ -60,6 +61,15 @@ public class ListaProdutos implements IProdutos {
     public void updateQuantidade(int codigo, double nova) throws Exception {
         for (Produto p : produtos){
             if (p.getCodigo() == codigo){
+
+                if(p instanceof ProdutoUnidade) {
+                    int quantidadeInt = (int) nova;
+
+                    if(quantidadeInt != nova) {
+                        throw new QuantidadeNotSupportedException("Quantidade não suportada.");
+                    }
+                }
+
                 p.setQuantidade(nova);
                 return;
             }
@@ -82,16 +92,20 @@ public class ListaProdutos implements IProdutos {
     public void addQuantidade(int codigo, double quantidade) throws Exception {
         for (Produto p : produtos){
             if (p.getCodigo() == codigo){
+
+                if(p instanceof ProdutoUnidade) {
+                    int quantidadeInt = (int) quantidade;
+
+                    if(quantidadeInt != quantidade) {
+                        throw new AddQuantidadeNotSupportedException("Não foi possível adicionar a quantidade.");
+                    }
+                }
+
                 p.setQuantidade(p.getQuantidade() + quantidade);
                 return;
             }
         }
         throw new AddQuantidadeNotSupportedException("Não foi possível adicionar a quantidade.");
-        
-        
-
-        //LANÇAR EXCEPTION
-
     }
 
     @Override
