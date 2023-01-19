@@ -49,13 +49,23 @@ public class ListaNotaFiscal implements INotasFiscais {
 
     @Override
     public double getTotal(int codigo) throws Exception {
-        // TODO Auto-generated method stub
+        for (NotaFiscal notaFiscal : listaNotaFiscal){
+            if (notaFiscal.getCodigo() == codigo){
+                return notaFiscal.getTotal();
+            }
+        }
         return 0;
     }
 
     @Override
     public void addItem(int codigo, Item item) throws Exception {
-        // TODO Auto-generated method stub
+        for (NotaFiscal notaFiscal : listaNotaFiscal){
+            if (notaFiscal.getCodigo() == codigo){
+                notaFiscal.add(item);
+                return;
+            }
+        }
+        throw new NotaFiscalNotFoundException("Nota fiscal não encontrado.");
 
     }
 

@@ -16,6 +16,10 @@ public class NotaFiscal {
         this.itens = itens;
         codigoUnico++;
     }
+
+    public void add(Item item) {
+        itens.add(item);
+    }
     
     public int getCodigo() { return codigo; }
     
@@ -23,9 +27,18 @@ public class NotaFiscal {
 
     public ArrayList<Item> getItens() { return itens; }
 
+    public double getTotal() {
+        double total = 0;
+        for (Item item : itens) {
+            total += item.getPreco();
+        }
+        return total;
+    }
+
     public void setData(Calendar data) { this.data = data; }
 
     public void setItens(ArrayList<Item> itens) { this.itens = itens; }
+
 
     
 

@@ -113,6 +113,15 @@ public class ListaProdutos implements IProdutos {
         for (Produto p : produtos){
             if (p.getCodigo() == codigo){
                 if (p.getQuantidade() - quantidade >= 0){
+
+                    if(p instanceof ProdutoUnidade) {
+                        int quantidadeInt = (int) quantidade;
+
+                        if(quantidadeInt != quantidade) {
+                            throw new SubQuantidadeNotSupportedException("Não foi possível subtrair a quantidade.");
+                        }
+                    }
+
                     p.setQuantidade(p.getQuantidade() - quantidade);
                     return;
                 }
