@@ -1,45 +1,39 @@
 package com.example.baseclasse;
 
-import java.util.ArrayList;
 import java.util.Calendar;
+
+import com.example.listas.ListaItem;
 
 public class NotaFiscal {
 
     private int codigo;
     private Calendar data;
-    private ArrayList<Item> itens;
+    private ListaItem itens;
     private static int codigoUnico = 10000;
 
-    public NotaFiscal(int codigo, Calendar data, ArrayList<Item> itens) {
-        this.codigo = codigoUnico;
+    public NotaFiscal(Calendar data, ListaItem itens) {
+        
         this.data = data;
         this.itens = itens;
-        codigoUnico++;
+        this.codigo = codigoUnico++;
     }
 
-    public void add(Item item) {
-        itens.add(item);
-    }
+    public void add(Item item) throws Exception { itens.addItem(item); }
+
+    public void remove(Item item) throws Exception { itens.removeItem(item); }
+
+    public Item getItem(int codigo) throws Exception { return itens.getItem(codigo); }
     
+    public double getTotal() throws Exception { return itens.getTotal(); }
+
     public int getCodigo() { return codigo; }
     
     public Calendar getData() { return data; }
 
-    public ArrayList<Item> getItens() { return itens; }
-
-    public double getTotal() {
-        double total = 0;
-        for (Item item : itens) {
-            total += item.getPreco();
-        }
-        return total;
-    }
+    public ListaItem getItens() { return itens; }
 
     public void setData(Calendar data) { this.data = data; }
 
-    public void setItens(ArrayList<Item> itens) { this.itens = itens; }
-
-
-    
+    public void setItens(ListaItem itens) { this.itens = itens; }
 
 }

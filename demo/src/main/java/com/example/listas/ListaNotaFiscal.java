@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.example.baseclasse.Item;
 import com.example.baseclasse.NotaFiscal;
+import com.example.exceptions.notafiscal.AddNotaFiscalException;
 import com.example.exceptions.notafiscal.NotaFiscalNotFoundException;
 import com.example.exceptions.notafiscal.RemoveNotaFiscalException;
 
@@ -20,6 +21,7 @@ public class ListaNotaFiscal implements INotasFiscais {
         if(nf != null) {
             listaNotaFiscal.add(nf);
         }
+        throw new AddNotaFiscalException("Não foi possível adicionar a nota fiscal.");
     }
 
     @Override
@@ -27,22 +29,18 @@ public class ListaNotaFiscal implements INotasFiscais {
         for (NotaFiscal notaFiscal : listaNotaFiscal) {
             if (notaFiscal.getCodigo() == codigo) {
                 listaNotaFiscal.remove(notaFiscal);
+                return;
             }
         }
-        
-
+        throw new RemoveNotaFiscalException("Não foi possível remover a nota fiscal.");
     }
-
-    
 
     @Override
     public NotaFiscal getNotaFiscal(int codigo) throws Exception {
         for (NotaFiscal notaFiscal : listaNotaFiscal){
             if (notaFiscal.getCodigo() == codigo){
                 return notaFiscal;
-
             }
-
         }
         throw new NotaFiscalNotFoundException("Nota fiscal não encontrado.");
     }
@@ -54,7 +52,7 @@ public class ListaNotaFiscal implements INotasFiscais {
                 return notaFiscal.getTotal();
             }
         }
-        return 0;
+        throw new NotaFiscalNotFoundException("Nota fiscal não encontrada.");
     }
 
     @Override
@@ -73,12 +71,11 @@ public class ListaNotaFiscal implements INotasFiscais {
     public void removeItem(int codigo, Item item) throws Exception {
         for (NotaFiscal nf : listaNotaFiscal){
 			if (nf.getCodigo() == codigo){
-				listaNotaFiscal.remove(nf);
+				nf.remove(item);
 				return;
 			}
 		}
 		throw new RemoveNotaFiscalException("Não foi possível remover a nota fiscal.");
-		
     }
 
 }
