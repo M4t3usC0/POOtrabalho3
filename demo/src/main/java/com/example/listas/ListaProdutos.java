@@ -24,6 +24,10 @@ public class ListaProdutos implements IProdutos {
      * 
      */
     public ListaProdutos(ArrayList<Produto> produtos) {
+        if(produtos == null) {
+            throw new IllegalArgumentException("Lista de produtos não pode ser nula.");
+        }
+
         this.produtos = produtos;
     }
 
@@ -59,6 +63,11 @@ public class ListaProdutos implements IProdutos {
     
     @Override
     public void updateQuantidade(int codigo, double nova) throws Exception {
+
+        if(nova <= 0) {
+            throw new QuantidadeNotSupportedException("Quantidade não suportada.");
+        }
+
         for (Produto p : produtos){
             if (p.getCodigo() == codigo){
 
@@ -79,6 +88,11 @@ public class ListaProdutos implements IProdutos {
     
     @Override
     public void updatePreco(int codigo, double novo) throws Exception {
+
+        if(novo < 0) {
+            throw new PrecoNotSupportedException("Preço não suportado.");
+        }
+        
         for (Produto p : produtos){
             if (p.getCodigo() == codigo){
                 p.setPreco(novo);
@@ -90,6 +104,11 @@ public class ListaProdutos implements IProdutos {
     
     @Override
     public void addQuantidade(int codigo, double quantidade) throws Exception {
+
+        if(quantidade <= 0) {
+            throw new AddQuantidadeNotSupportedException("Não foi possível adicionar a quantidade.");
+        }
+
         for (Produto p : produtos){
             if (p.getCodigo() == codigo){
 
@@ -110,13 +129,18 @@ public class ListaProdutos implements IProdutos {
 
     @Override
     public void subQuantidade(int codigo, double quantidade) throws Exception {
+
+        if(quantidade <= 0) {
+            throw new SubQuantidadeNotSupportedException("Não foi possível subtrair a quantidade.");
+        }
+
         for (Produto p : produtos){
             if (p.getCodigo() == codigo){
                 if (p.getQuantidade() - quantidade >= 0){
 
                     if(p instanceof ProdutoUnidade) {
                         int quantidadeInt = (int) quantidade;
-
+                        
                         if(quantidadeInt != quantidade) {
                             throw new SubQuantidadeNotSupportedException("Não foi possível subtrair a quantidade.");
                         }

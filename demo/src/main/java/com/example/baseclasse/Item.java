@@ -9,6 +9,14 @@ public class Item {
 
     public Item(Produto produto, double quantidade) {
 
+        if(produto == null) {
+            throw new IllegalArgumentException("Produto não pode ser nulo.");
+        }
+
+        if(quantidade <= 0) {
+            throw new IllegalArgumentException("Quantidade deve ser maior que zero.");
+        }
+
         if(produto instanceof ProdutoUnidade) {
             int quantidadeInt = (int) quantidade;
 

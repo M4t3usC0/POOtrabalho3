@@ -12,6 +12,14 @@ public class NotaFiscal {
     private static int codigoUnico = 10000;
 
     public NotaFiscal(Calendar data, ListaItem itens) {
+
+        if(data == null) {
+            throw new IllegalArgumentException("Data não pode ser nula.");
+        }
+
+        if(itens == null) {
+            throw new IllegalArgumentException("Lista de itens não pode ser nula.");
+        }
         
         this.data = data;
         this.itens = itens;

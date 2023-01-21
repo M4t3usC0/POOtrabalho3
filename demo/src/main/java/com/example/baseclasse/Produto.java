@@ -1,15 +1,31 @@
 package com.example.baseclasse;
 
 public class Produto {
-    
-    private static int codigoUnico = 10000;
+
     private int codigo;
     private String nome;
     private double preco;
-    private double quantidade;
     private String descricao;
+    private double quantidade;
+    private static int codigoUnico = 10000;
     
     public Produto(String nome, double preco, double quantidade, String descricao) {
+        if(nome == null || nome.trim().isEmpty()) {
+            throw new IllegalArgumentException("Nome não pode ser nulo ou vazio.");
+        }
+
+        if(preco <= 0) {
+            throw new IllegalArgumentException("Preço deve ser maior que zero.");
+        }
+
+        if(quantidade <= 0) {
+            throw new IllegalArgumentException("Quantidade deve ser maior que zero.");
+        }
+
+        if(descricao == null || descricao.trim().isEmpty()) {
+            throw new IllegalArgumentException("Descrição não pode ser nula ou vazia.");
+        }
+
         this.nome = nome;
         this.preco = preco;
         this.descricao = descricao;

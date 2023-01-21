@@ -13,6 +13,10 @@ public class ListaNotaFiscal implements INotasFiscais {
     private ArrayList<NotaFiscal> listaNotaFiscal;
 
     public ListaNotaFiscal(ArrayList<NotaFiscal> listaNotaFiscal) {
+        if(listaNotaFiscal == null) {
+            throw new IllegalArgumentException("Lista de notas fiscais não pode ser nula.");
+        }
+
         this.listaNotaFiscal = listaNotaFiscal;
     }
 
@@ -64,7 +68,6 @@ public class ListaNotaFiscal implements INotasFiscais {
             }
         }
         throw new NotaFiscalNotFoundException("Nota fiscal não encontrado.");
-
     }
 
     @Override
