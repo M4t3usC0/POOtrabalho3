@@ -24,10 +24,6 @@ public class ListaProdutos implements IProdutos {
      * 
      */
     public ListaProdutos(ArrayList<Produto> produtos) {
-        if(produtos == null) {
-            throw new IllegalArgumentException("Lista de produtos não pode ser nula.");
-        }
-
         this.produtos = produtos;
     }
 

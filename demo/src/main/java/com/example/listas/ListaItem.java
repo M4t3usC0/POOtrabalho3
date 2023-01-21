@@ -5,14 +5,10 @@ import com.example.baseclasse.Item;
 
 public class ListaItem {
     
-    private ArrayList<Item> itens;
+    private ArrayList<Item> listaItens;
 
-    public ListaItem(ArrayList<Item> itens) {
-        if(itens == null) {
-            throw new IllegalArgumentException("Lista de itens não pode ser nula.");
-        }
-    
-        this.itens = itens;
+    public ListaItem() {
+        this.listaItens = new ArrayList<Item>();
     }
 
     public void addItem(Item item) {
@@ -20,18 +16,18 @@ public class ListaItem {
             throw new IllegalArgumentException("Item não pode ser nulo.");
         }
     
-        itens.add(item);
+        listaItens.add(item);
     }
 
     public void removeItem(Item item) {
         if(item == null) {
             throw new IllegalArgumentException("Item não pode ser nulo.");
         }
-        itens.remove(item);
+        listaItens.remove(item);
     }
 
     public Item getItem(int codigo) {
-        for (Item item : itens) {
+        for (Item item : listaItens) {
             if (item.getCodigo() == codigo) {
                 return item;
             }
@@ -40,15 +36,15 @@ public class ListaItem {
     }
 
     public double getTotal() {
-        if(itens == null) {
+        if(listaItens == null) {
             throw new IllegalArgumentException("Lista de itens não pode ser nula.");
         }
-        if(itens.size() == 0) {
+        if(listaItens.size() == 0) {
             throw new IllegalArgumentException("Lista de itens não pode ser vazia.");
         }
 
         double total = 0;
-        for (Item item : itens) {
+        for (Item item : listaItens) {
             total += item.getPreco();
         }
         return total;
