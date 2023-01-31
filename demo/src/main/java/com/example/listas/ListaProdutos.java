@@ -23,8 +23,8 @@ public class ListaProdutos implements IProdutos {
     /**
      * 
      */
-    public ListaProdutos(ArrayList<Produto> produtos) {
-        this.produtos = produtos;
+    public ListaProdutos() {
+        this.produtos = new ArrayList<Produto>();
     }
 
 
@@ -32,6 +32,7 @@ public class ListaProdutos implements IProdutos {
     public void addProduto(Produto p) throws Exception {
         if (p != null){
             produtos.add(p);
+            return;
         }
         throw new AddProdutoException("Não foi possível adicionar o produto.");
     }
@@ -44,7 +45,7 @@ public class ListaProdutos implements IProdutos {
                 return;
             }
         }
-        throw new RemoveProdutoException("Não foi possível remover o produto."); 
+        throw new RemoveProdutoException("Produto não encontrado."); 
     }
     
     @Override

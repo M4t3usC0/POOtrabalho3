@@ -1,5 +1,8 @@
 package com.example.controller;
 
+import com.example.listas.ListaNotaFiscal;
+import com.example.listas.ListaProdutos;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -57,6 +60,10 @@ public class ControllerMenuPrincipal {
     @FXML
     private AnchorPane rootPane;
 
+    private static ListaProdutos listaProdutos;
+
+    private static ListaNotaFiscal listaNotaFiscal;
+
     @FXML
     void adicionaNotaFiscal(ActionEvent event) {
 
@@ -80,7 +87,13 @@ public class ControllerMenuPrincipal {
 
     @FXML
     void alterarInformacoesProduto(ActionEvent event) {
-
+        try {
+            AnchorPane pane = FXMLLoader.load(getClass().getResource("../views/produto/viewAlteraProduto.fxml"));
+            rootPane.getChildren().setAll(pane);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            alertInterface("ERRO", "Não foi possível entrar na tela de alterar produto", AlertType.ERROR);
+        }
     }
 
     @FXML
@@ -191,7 +204,13 @@ public class ControllerMenuPrincipal {
 
     @FXML
     void removeProduto(ActionEvent event) {
-
+        try {
+            AnchorPane pane = FXMLLoader.load(getClass().getResource("../views/produto/viewRemoverProduto.fxml"));
+            rootPane.getChildren().setAll(pane);
+        } catch (Exception e) {
+            System.out.println(e);
+            alertInterface("ERRO", "Não foi possível entrar na tela de remover produto", AlertType.ERROR);
+        }
     }
 
     @FXML
@@ -210,6 +229,22 @@ public class ControllerMenuPrincipal {
         alert.setHeaderText(null);
         alert.setContentText(mensagem);
         alert.showAndWait();
+    }
+
+    public void setListaProdutos(ListaProdutos listaProdutosNova) {
+        listaProdutos = listaProdutosNova;
+    }
+
+    public void setListaNotaFiscal(ListaNotaFiscal ListaNotaFiscalNova) {
+        listaNotaFiscal = ListaNotaFiscalNova;
+    }
+
+    public static ListaProdutos getListaProdutos() {
+        return listaProdutos;
+    }
+
+    public static ListaNotaFiscal getListaNotaFiscal() {
+        return listaNotaFiscal;
     }
 
 }

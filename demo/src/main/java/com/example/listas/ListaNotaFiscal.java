@@ -20,6 +20,7 @@ public class ListaNotaFiscal implements INotasFiscais {
     public void addNotaFiscal(NotaFiscal nf) {
         if(nf != null) {
             listaNotaFiscal.add(nf);
+            return;
         }
         throw new AddNotaFiscalException("Não foi possível adicionar a nota fiscal.");
     }

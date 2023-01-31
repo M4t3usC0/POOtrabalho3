@@ -17,11 +17,6 @@
             <Font name="System Bold" size="36.0" />
          </font>
       </Label>
-      <ImageView fx:id="btnVoltar" fitHeight="40.0" fitWidth="40.0" layoutX="23.0" layoutY="21.0" onMouseClicked="#voltarParaPrincipal" onMouseExited="#notHoverBtnVoltar" onMouseMoved="#hoverBtnVoltar">
-         <image>
-            <Image url="@POOInterface/interfacePOO/LocadoraCentral/src/views/cliente/pngVoltar.png" />
-         </image>
-      </ImageView>
       <TextField fx:id="textFieldPreco" layoutX="43.0" layoutY="300.0" prefHeight="30.0" prefWidth="311.0" promptText="Digite o preço" style="-fx-background-radius: 20; -fx-background-color: white;">
          <font>
             <Font size="18.0" />
@@ -37,7 +32,7 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="textFieldQuantidade" layoutX="43.0" layoutY="215.0" prefHeight="30.0" prefWidth="419.0" promptText="Digite a quantidade" style="-fx-background-radius: 20; -fx-background-color: white;">
+      <TextField fx:id="textFieldQuantidade" layoutX="43.0" layoutY="215.0" prefHeight="30.0" prefWidth="419.0" promptText="Digite a quantidade (Exemplo: 5 || 5.5)" style="-fx-background-radius: 20; -fx-background-color: white;">
          <font>
             <Font size="18.0" />
          </font>
@@ -62,12 +57,12 @@
             <Font size="20.0" />
          </font>
       </Button>
-      <RadioButton fx:id="radioButtonUnidade" layoutX="544.0" layoutY="226.0" mnemonicParsing="false" textFill="WHITE">
+      <RadioButton fx:id="radioButtonUnidade" layoutX="544.0" layoutY="226.0" mnemonicParsing="false" onAction="#radioButtonUnidadeClick" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </RadioButton>
-      <RadioButton fx:id="radioButtonFracionado" layoutX="712.0" layoutY="226.0" mnemonicParsing="false" textFill="WHITE">
+      <RadioButton fx:id="radioButtonFracionado" layoutX="712.0" layoutY="226.0" mnemonicParsing="false" onAction="#radioButtonFracionadoClick" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
@@ -92,11 +87,16 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <TextArea fx:id="textFieldDescricao" layoutX="50.0" layoutY="390.0" prefHeight="95.0" prefWidth="448.0" />
+      <TextArea fx:id="textFieldDescricao" layoutX="50.0" layoutY="390.0" prefHeight="95.0" prefWidth="448.0" promptText="Digite a descrição do produto" />
       <Label layoutX="50.0" layoutY="358.0" text="Descrição do produto" textFill="WHITE">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
+      <ImageView fx:id="btnVoltar" fitHeight="50.0" fitWidth="50.0" layoutX="38.0" layoutY="29.0" onMouseClicked="#voltarParaPrincipal">
+         <image>
+            <Image url="@../../images/pngVoltar.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

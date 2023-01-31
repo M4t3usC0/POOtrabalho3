@@ -12,11 +12,11 @@ public class ListaItem {
     }
 
     public void addItem(Item item) {
-        if(item == null) {
-            throw new IllegalArgumentException("Item não pode ser nulo.");
+        if(item != null) {
+            listaItens.add(item);
+            return;
         }
-    
-        listaItens.add(item);
+        throw new IllegalArgumentException("Item não pode ser nulo.");
     }
 
     public void removeItem(Item item) {
