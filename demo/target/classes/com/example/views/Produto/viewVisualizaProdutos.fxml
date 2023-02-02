@@ -20,11 +20,6 @@
             <Font name="System Bold" size="36.0" />
          </font>
       </Label>
-      <ImageView fx:id="btnVoltar" fitHeight="40.0" fitWidth="40.0" layoutX="33.0" layoutY="31.0" onMouseClicked="#voltarParaPrincipal" onMouseExited="#notHoverBtnVoltar" onMouseMoved="#hoverBtnVoltar">
-         <image>
-            <Image url="@POOInterface/interfacePOO/LocadoraCentral/src/views/cliente/pngVoltar.png" />
-         </image>
-      </ImageView>
       <Button fx:id="btnInformacaoTodosProdutos" layoutX="572.0" layoutY="87.0" mnemonicParsing="false" onAction="#InformacaoTodosProdutos" onMouseExited="#notHoverBtnInformacaoTodosProdutos" onMouseMoved="#hoverBtnInformacaoTodosProdutos" prefHeight="70.0" prefWidth="211.0" style="-fx-background-radius: 50; -fx-background-color: #2b6b2a;" text="Informações completas de todos os produtos" textAlignment="CENTER" textFill="WHITE" wrapText="true">
          <font>
             <Font size="18.0" />
@@ -124,5 +119,10 @@
             </Label>
          </children>
       </Pane>
+      <ImageView fx:id="btnVoltar" fitHeight="50.0" fitWidth="50.0" layoutX="48.0" layoutY="39.0" onMouseClicked="#voltarParaPrincipal" onMouseEntered="#hoverBtnVoltar">
+         <image>
+            <Image url="@../../images/pngVoltar.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

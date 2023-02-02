@@ -45,11 +45,11 @@ public class ControllerMenuPrincipal {
     @FXML
     private Button btnVisualizaInformacoesProduto;
 
-    @FXML
-    private Pane paneMenuClientesFechado;
+    // @FXML
+    // private Pane paneMenuClientesFechado;
 
-    @FXML
-    private Pane paneMenuLocacoesFechado;
+    // @FXML
+    // private Pane paneMenuLocacoesFechado;
 
     @FXML
     private Pane paneMenuNotaFiscalExpandido;
@@ -66,7 +66,13 @@ public class ControllerMenuPrincipal {
 
     @FXML
     void adicionaNotaFiscal(ActionEvent event) {
-
+        try {
+            AnchorPane pane = FXMLLoader.load(getClass().getResource("../views/NotaFiscal/viewAddNotaFiscal.fxml"));
+            rootPane.getChildren().setAll(pane);
+        } catch (Exception e) {
+            System.out.println(e);
+            alertInterface("ERRO", "Não foi possível entrar na tela de adicionar nova venda", AlertType.ERROR);
+        }
     }
 
     @FXML
@@ -98,58 +104,57 @@ public class ControllerMenuPrincipal {
 
     @FXML
     void fecharMenuNotaFiscal(MouseEvent event) {
-
+        paneMenuNotaFiscalExpandido.setVisible(false);
     }
 
     @FXML
     void fecharMenuProduto(MouseEvent event) {
         paneMenuProdutoExpandido.setVisible(false);
-
     }
 
     @FXML
     void hoverAdicionaNotaFiscal(MouseEvent event) {
-
+        btnAdicionaNotaFiscal.setStyle("-fx-background-color: #3e081a; -fx-cursor: hand;");
     }
 
     @FXML
     void hoverAdicionaProduto(MouseEvent event) {
-
+        btnAdicionaProduto.setStyle("-fx-background-color: #5c0a27; -fx-cursor: hand;");
     }
 
     @FXML
     void hoverAlteraInformacoesNotaFiscal(MouseEvent event) {
-
+        btnAlteraInformacoesNotaFiscal.setStyle("-fx-background-color: #3e081a; -fx-cursor: hand;");
     }
 
     @FXML
     void hoverAlteraInformacoesProduto(MouseEvent event) {
-
+        btnAlterarInformacoesProduto.setStyle("-fx-background-color: #5c0a27; -fx-cursor: hand;");
     }
 
     @FXML
     void hoverRemoveNotaFiscal(MouseEvent event) {
-
+        btnRemoveNotaFiscal.setStyle("-fx-background-color: #3e081a; -fx-cursor: hand;");
     }
 
     @FXML
     void hoverRemoveProduto(MouseEvent event) {
-
+        btnRemoveProduto.setStyle("-fx-background-color: #5c0a27; -fx-cursor: hand;");
     }
 
     @FXML
     void hoverVisualizaInformacoesNotaFiscal(MouseEvent event) {
-
+        btnVisualizaInformacoesNotaFiscal.setStyle("-fx-background-color: #3e081a; -fx-cursor: hand;");
     }
 
     @FXML
     void hoverVisualizaInformacoesProduto(MouseEvent event) {
-
+        btnVisualizaInformacoesProduto.setStyle("-fx-background-color: #5c0a27; -fx-cursor: hand;");
     }
 
     @FXML
     void mostrarMenuNotaFiscal(MouseEvent event) {
-        
+        paneMenuNotaFiscalExpandido.setVisible(true);
     }
 
     @FXML
@@ -159,47 +164,53 @@ public class ControllerMenuPrincipal {
 
     @FXML
     void notHoverAdicionaNotaFiscal(MouseEvent event) {
-
+        btnAdicionaNotaFiscal.setStyle("-fx-background-color: #5c0a27");
     }
 
     @FXML
     void notHoverAdicionaProduto(MouseEvent event) {
-
+        btnAdicionaProduto.setStyle("-fx-background-color: #370617");
     }
 
     @FXML
     void notHoverAlteraInformacoesNotaFiscal(MouseEvent event) {
-
+        btnAlteraInformacoesNotaFiscal.setStyle("-fx-background-color: #5c0a27");
     }
 
     @FXML
     void notHoverAlteraInformacoesProduto(MouseEvent event) {
-
+        btnAlterarInformacoesProduto.setStyle("-fx-background-color: #370617");
     }
 
     @FXML
     void notHoverRemoveNotaFiscal(MouseEvent event) {
-
+        btnRemoveNotaFiscal.setStyle("-fx-background-color: #5c0a27");
     }
 
     @FXML
     void notHoverRemoveProduto(MouseEvent event) {
-
+        btnRemoveProduto.setStyle("-fx-background-color: #370617");
     }
 
     @FXML
     void notHoverVisualizaInformacoesNotaFiscal(MouseEvent event) {
-
+        btnVisualizaInformacoesNotaFiscal.setStyle("-fx-background-color: #5c0a27");
     }
 
     @FXML
     void notHoverVisualizaInformacoesProduto(MouseEvent event) {
-
+        btnVisualizaInformacoesProduto.setStyle("-fx-background-color: #370617");
     }
 
     @FXML
     void removeNotaFiscal(ActionEvent event) {
-
+        try {
+            AnchorPane pane = FXMLLoader.load(getClass().getResource("../views/NotaFiscal/viewRemoverNotaFiscal.fxml"));
+            rootPane.getChildren().setAll(pane);
+        } catch (Exception e) {
+            System.out.println(e);
+            alertInterface("ERRO", "Não foi possível entrar na tela de remover produto", AlertType.ERROR);
+        }
     }
 
     @FXML
@@ -220,7 +231,13 @@ public class ControllerMenuPrincipal {
 
     @FXML
     void visualizaInformacoesProduto(ActionEvent event) {
-
+        try {
+            AnchorPane pane = FXMLLoader.load(getClass().getResource("../views/produto/viewVisualizaProdutos.fxml"));
+            rootPane.getChildren().setAll(pane);
+        } catch (Exception e) {
+            System.out.println(e);
+            alertInterface("ERRO", "Não foi possível entrar na tela de visualizar informações do produto", AlertType.ERROR);
+        }
     }
 
     void alertInterface(String titulo, String mensagem, AlertType tipo) {

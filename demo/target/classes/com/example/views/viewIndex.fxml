@@ -42,7 +42,7 @@
       </Pane>
       <Pane fx:id="paneMenuLocacoesFechado" layoutX="450.0" layoutY="551.0" prefHeight="48.0" prefWidth="450.0" style="-fx-background-color: #5c0a27;">
          <children>
-            <Button fx:id="btnNotaFiscalExpandir" layoutY="2.0" mnemonicParsing="false" onMouseMoved="#mostrarMenuNotaFiscal" prefHeight="44.0" prefWidth="450.0" style="-fx-background-color: #5c0a27;" text="Nota Fiscal" textFill="WHITE">
+            <Button fx:id="btnNotaFiscalExpandir" layoutY="2.0" mnemonicParsing="false" onMouseMoved="#mostrarMenuNotaFiscal" prefHeight="44.0" prefWidth="450.0" style="-fx-background-color: #5c0a27;" text="Venda" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
@@ -51,12 +51,12 @@
       </Pane>
       <Pane fx:id="paneMenuNotaFiscalExpandido" layoutX="450.0" layoutY="340.0" onMouseExited="#fecharMenuNotaFiscal" prefHeight="260.0" prefWidth="450.0" style="-fx-background-color: #5c0a27;" visible="false">
          <children>
-            <Button fx:id="btnAdicionaNotaFiscal" layoutY="27.0" mnemonicParsing="false" onAction="#adicionaNotaFiscal" onMouseExited="#notHoverAdicionaNotaFiscal" onMouseMoved="#hoverAdicionaNotaFiscal" prefHeight="43.0" prefWidth="450.0" style="-fx-background-color: #5c0a27; -fx-background-radius: 0;" text="Adicionar nota fiscal" textFill="WHITE">
+            <Button fx:id="btnAdicionaNotaFiscal" layoutY="27.0" mnemonicParsing="false" onAction="#adicionaNotaFiscal" onMouseExited="#notHoverAdicionaNotaFiscal" onMouseMoved="#hoverAdicionaNotaFiscal" prefHeight="43.0" prefWidth="450.0" style="-fx-background-color: #5c0a27; -fx-background-radius: 0;" text="Adicionar nova venda" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button fx:id="btnRemoveNotaFiscal" layoutY="70.0" mnemonicParsing="false" onAction="#removeNotaFiscal" onMouseExited="#notHoverRemoveNotaFiscal" onMouseMoved="#hoverRemoveNotaFiscal" prefHeight="43.0" prefWidth="450.0" style="-fx-background-color: #5c0a27; -fx-background-radius: 0;" text="Remover locação" textFill="WHITE">
+            <Button fx:id="btnRemoveNotaFiscal" layoutY="70.0" mnemonicParsing="false" onAction="#removeNotaFiscal" onMouseExited="#notHoverRemoveNotaFiscal" onMouseMoved="#hoverRemoveNotaFiscal" prefHeight="43.0" prefWidth="450.0" style="-fx-background-color: #5c0a27; -fx-background-radius: 0;" text="Remover venda" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>

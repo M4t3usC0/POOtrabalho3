@@ -193,7 +193,7 @@ public class ControllerAddProduto {
 
     @FXML
     void notHoverBtnVoltar(MouseEvent event) {
-        btnVoltar.setImage(new Image("../../images/pngVoltarHover.png"));
+        btnVoltar.setImage(new Image("../../images/pngVoltar.png"));
         btnVoltar.setStyle("-fx-cursor: hand;");
     }
 
