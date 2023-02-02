@@ -62,7 +62,7 @@
             <Image url="@../../images/pngVoltar.png" />
          </image>
       </ImageView>
-      <Button fx:id="btnConcluir" layoutX="343.0" layoutY="532.0" mnemonicParsing="false" onAction="#adicionarVenda" onMouseExited="#notHoverBtnConcluir" onMouseMoved="#hoverBtnConcluir" prefHeight="46.0" prefWidth="177.0" style="-fx-background-radius: 50; -fx-background-color: #2b6b2a;" text="Concluir Venda" textFill="WHITE">
+      <Button fx:id="btnConcluir" layoutX="648.0" layoutY="534.0" mnemonicParsing="false" onAction="#adicionarVenda" onMouseExited="#notHoverBtnConcluir" onMouseMoved="#hoverBtnConcluir" prefHeight="46.0" prefWidth="177.0" style="-fx-background-radius: 50; -fx-background-color: #2b6b2a;" text="Concluir Venda" textFill="WHITE">
          <font>
             <Font size="20.0" />
          </font>
@@ -73,5 +73,15 @@
           <TableColumn prefWidth="75.0" text="C2" />
         </columns>
       </TableView>
+      <Button fx:id="btnAlterarProduto" layoutX="53.0" layoutY="534.0" mnemonicParsing="false" onAction="#alterarProduto" onMouseExited="#notHoverBtnProcurar" onMouseMoved="#hoverBtnProcurar" prefHeight="46.0" prefWidth="174.0" style="-fx-background-radius: 50; -fx-background-color: #807d0a;" text="Alterar Produto" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnRemover" layoutX="381.0" layoutY="534.0" mnemonicParsing="false" onAction="#removerProduto" onMouseExited="#notHoverBtnRemover" onMouseMoved="#hoverBtnRemover" prefHeight="46.0" prefWidth="134.0" style="-fx-background-radius: 50; -fx-background-color: #7d2727;" text="Remover" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

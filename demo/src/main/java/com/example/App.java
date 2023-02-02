@@ -1,6 +1,7 @@
 package com.example;
 
 import com.example.baseclasse.Produto;
+import com.example.baseclasse.ProdutoUnidade;
 import com.example.controller.ControllerMenuPrincipal;
 
 import com.example.listas.ListaProdutos;
@@ -28,11 +29,14 @@ public class App extends Application {
             ListaProdutos listaProdutos = new ListaProdutos();
             ListaNotaFiscal listaNotaFiscal = new ListaNotaFiscal();
 
+
             Produto p1 = new Produto("Arroz", 5.00, 10, "Produto perecivel");
             Produto p2 = new Produto("Feijão", 4.00, 20, "Produto perecivel");
-            
+            Produto p3 = new ProdutoUnidade("Coca-Cola", 5.00, 5, "Produto não perecivel");
+
             listaProdutos.addProduto(p1);
             listaProdutos.addProduto(p2);
+            listaProdutos.addProduto(p3);
 
             ControllerMenuPrincipal controller = fxmlLoader.getController();
             controller.setListaProdutos(listaProdutos);

@@ -88,7 +88,13 @@ public class ControllerMenuPrincipal {
 
     @FXML
     void alteraInformacoesNotaFiscal(ActionEvent event) {
-
+        try {
+            AnchorPane pane = FXMLLoader.load(getClass().getResource("../views/NotaFiscal/viewAlterarNotaFiscal.fxml"));
+            rootPane.getChildren().setAll(pane);
+        } catch (Exception e) {
+            System.out.println(e);
+            alertInterface("ERRO", "Não foi possível entrar na tela de remover produto", AlertType.ERROR);
+        }
     }
 
     @FXML

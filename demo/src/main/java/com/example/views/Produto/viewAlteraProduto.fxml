@@ -18,17 +18,12 @@
             <Font name="System Bold" size="36.0" />
          </font>
       </Label>
-      <ImageView fx:id="btnVoltar" fitHeight="40.0" fitWidth="40.0" layoutX="23.0" layoutY="21.0" onMouseClicked="#voltarParaPrincipal" onMouseExited="#notHoverBtnVoltar" onMouseMoved="#hoverBtnVoltar">
-         <image>
-            <Image url="@POOInterface/interfacePOO/LocadoraCentral/src/views/cliente/pngVoltar.png" />
-         </image>
-      </ImageView>
-      <TextField fx:id="textFieldCodigo" layoutX="53.0" layoutY="101.0" prefHeight="30.0" prefWidth="311.0" promptText="Digiteo código do pruduto" style="-fx-background-radius: 20; -fx-background-color: white;">
+      <TextField fx:id="textFieldCodigo" layoutX="53.0" layoutY="109.0" prefHeight="30.0" prefWidth="311.0" promptText="Digite o código do produto" style="-fx-background-radius: 20; -fx-background-color: white;">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <Label layoutX="63.0" layoutY="68.0" text="Código do produto" textFill="WHITE">
+      <Label layoutX="63.0" layoutY="85.0" text="Código do produto" textFill="WHITE">
          <font>
             <Font size="16.0" />
          </font>
@@ -108,5 +103,10 @@
             <Font size="16.0" />
          </font>
       </Label>
+      <ImageView fx:id="btnVoltar" fitHeight="50.0" fitWidth="50.0" layoutX="38.0" layoutY="29.0" onMouseClicked="#voltarParaPrincipal" onMouseExited="#notHoverBtnVoltar" onMouseMoved="#hoverBtnVoltar">
+         <image>
+            <Image url="@../../images/pngVoltar.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

@@ -1,11 +1,19 @@
 package com.example.controller.produto;
 
+import com.example.baseclasse.Produto;
+import com.example.baseclasse.ProdutoUnidade;
+import com.example.controller.ControllerMenuPrincipal;
+import com.example.listas.ListaProdutos;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -51,6 +59,13 @@ public class ControllerAlteraProduto {
 
     @FXML
     private TextField textFieldQuantidade;
+
+    private ListaProdutos listaProdutos;
+
+    @FXML
+    void initialize() {
+        listaProdutos = ControllerMenuPrincipal.getListaProdutos();
+    }
 
     @FXML
     void hoverBtnLimpar(MouseEvent event) {
@@ -100,16 +115,141 @@ public class ControllerAlteraProduto {
     @FXML
     void procurarProduto(ActionEvent event) {
 
+        String codigo = textFieldCodigo.getText();
+
+        try {
+
+            if(codigo.trim().isEmpty()) {
+                throw new Exception("Campo código deve ser preenchido com um inteiro!");
+            }
+
+            int codigoInt;
+
+            try {
+                codigoInt = Integer.parseInt(codigo);
+            } catch (Exception e) {
+                throw new Exception("Código deve ser um número inteiro");
+            }
+
+            Produto produto;
+
+            try {
+                produto = listaProdutos.getProduto(codigoInt);
+            } catch (Exception e) {
+                throw e;
+            }
+
+            String nomeProduto = produto.getNome();
+            String descricaoProduto = produto.getDescricao();
+            double precoProduto = produto.getPreco();
+
+            textFieldNome.setText(nomeProduto);
+            textFieldDescricao.setText(descricaoProduto);
+            textFieldPreco.setText(precoProduto + "");
+            
+            if(produto instanceof ProdutoUnidade) {
+                int quantidadeProduto = (int) produto.getQuantidade();
+                textFieldQuantidade.setText(quantidadeProduto + "");
+                radioButtonUnidade.setSelected(true);
+                radioButtonFracionado.setSelected(false);
+            } else {
+                double quantidadeProduto = produto.getQuantidade();
+                textFieldQuantidade.setText(quantidadeProduto + "");
+                radioButtonFracionado.setSelected(true);
+                radioButtonUnidade.setSelected(false);
+            }
+
+        } catch (Exception e) {
+            alertInterface("ERRO", e.getMessage(), AlertType.ERROR);
+        }
+
+
     }
 
     @FXML
     void salvarAlteracaoProduto(ActionEvent event) {
 
+        String nome = textFieldNome.getText();
+        String descricao = textFieldDescricao.getText();
+        String preco = textFieldPreco.getText();
+        String quantidade = textFieldQuantidade.getText();
+        String codigo = textFieldCodigo.getText();
+
+        try {
+
+            if(nome.trim().isEmpty()) {
+                throw new Exception("Campo nome deve ser preenchido!");
+            }
+
+            if(descricao.trim().isEmpty()) {
+                throw new Exception("Campo descrição deve ser preenchido!");
+            }
+
+            if(preco.trim().isEmpty()) {
+                throw new Exception("Campo preço deve ser preenchido!");
+            }
+
+            if(quantidade.trim().isEmpty()) {
+                throw new Exception("Campo quantidade deve ser preenchido!");
+            }
+
+            if(codigo.trim().isEmpty()) {
+                throw new Exception("Campo código deve ser preenchido!");
+            }
+
+            double precoDouble;
+            double quantidadeDouble;
+            int codigoInt;
+
+            try {
+                precoDouble = Double.parseDouble(preco);
+            } catch (Exception e) {
+                throw new Exception("Preço deve ser um número real");
+            }
+
+            try {
+                quantidadeDouble = Double.parseDouble(quantidade);
+            } catch (Exception e) {
+                throw new Exception("Quantidade deve ser um número real");
+            }
+
+            try {
+                codigoInt = Integer.parseInt(codigo);
+            } catch (Exception e) {
+                throw new Exception("Código deve ser um número inteiro");
+            }
+
+
+
+
+        } catch (Exception e) {
+
+        }
+
+
+
     }
 
     @FXML
     void voltarParaPrincipal(MouseEvent event) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../../views/viewIndex.fxml"));
+            Pane cmdPane = (Pane) fxmlLoader.load();
 
+            rootPane.getChildren().clear();
+            rootPane.getChildren().add(cmdPane);
+        } catch (Exception e) {
+            System.out.println(e);
+            alertInterface("ERRO", "Não foi possível voltar para o menu principal", AlertType.ERROR);
+        }
+    }
+
+    void alertInterface(String titulo, String mensagem, AlertType tipo) {
+        Alert alert = new Alert(tipo);
+        alert.setTitle(titulo);
+        alert.setHeaderText(null);
+        alert.setContentText(mensagem);
+        alert.showAndWait();
     }
 
 }

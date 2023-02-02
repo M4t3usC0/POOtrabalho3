@@ -5,103 +5,131 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
-public class ControllerAddNotaFiscal {
-
-    @FXML
-    private Button btnAdicionar;
-
-    @FXML
-    private Button btnConcluir;
-
-    @FXML
-    private Button btnLimpar;
+public class ControllerAlterarNotaFiscal {
 
     @FXML
     private Button btnAlterarProduto;
 
     @FXML
+    private Button btnLimpar;
+
+    @FXML
+    private Button btnProcurar;
+
+    @FXML
     private Button btnRemover;
+
+    @FXML
+    private Button btnSalvar;
 
     @FXML
     private ImageView btnVoltar;
 
     @FXML
-    private TableView<?> tableNotaFiscal;
+    private AnchorPane rootPane;
 
     @FXML
-    private AnchorPane rootPane;
+    private Pane salvarAltera;
 
     @FXML
     private TextField textFieldCodigo;
 
     @FXML
+    private TextField textFieldCodigo1;
+
+    @FXML
     private TextField textFieldQuantidade;
 
     @FXML
-    void adicionarProduto(ActionEvent event) {
+    void alterarProduto(ActionEvent event) {
 
     }
 
     @FXML
-    void adicionarVenda(ActionEvent event) {
+    void hoverBtnAlterar(MouseEvent event) {
 
-    }
-
-    @FXML
-    void hoverBtnAdicionar(MouseEvent event) {
-        btnAdicionar.setStyle("-fx-background-color: #245823;-fx-cursor: hand; -fx-background-radius: 50;");
-    }
-
-    @FXML
-    void hoverBtnConcluir(MouseEvent event) {
-        btnConcluir.setStyle("-fx-background-color: #245823;-fx-cursor: hand; -fx-background-radius: 50;");
     }
 
     @FXML
     void hoverBtnLimpar(MouseEvent event) {
-        btnLimpar.setStyle("-fx-background-color: #686868;-fx-cursor: hand; -fx-background-radius: 50;");
+
+    }
+
+    @FXML
+    void hoverBtnProcurar(MouseEvent event) {
+
+    }
+
+    @FXML
+    void hoverBtnRemover(MouseEvent event) {
+
+    }
+
+    @FXML
+    void hoverBtnSalvar(MouseEvent event) {
+
     }
 
     @FXML
     void hoverBtnVoltar(MouseEvent event) {
-        // btnVoltar.setImage(new Image("../../images/pngVoltarHover.png"));
-        // btnVoltar.setStyle("-fx-cursor: hand;");
+
     }
 
     @FXML
     void limparCampos(ActionEvent event) {
-        textFieldCodigo.clear();
-        textFieldQuantidade.clear();
+
     }
 
     @FXML
-    void notHoverBtnAdicionar(MouseEvent event) {
-        btnAdicionar.setStyle("-fx-background-color: #2b6b2a;-fx-cursor: hand; -fx-background-radius: 50;");
+    void notHoverBtnAlterar(MouseEvent event) {
+
     }
 
     @FXML
     void notHoverBtnLimpar(MouseEvent event) {
-        btnLimpar.setStyle("-fx-background-color: #747474;-fx-cursor: hand; -fx-background-radius: 50;");
+
     }
 
     @FXML
-    void notHoverBtnConcluir(MouseEvent event) {
-        btnConcluir.setStyle("-fx-background-color: #2b6b2a;-fx-cursor: hand; -fx-background-radius: 50;");
+    void notHoverBtnProcurar(MouseEvent event) {
+
+    }
+
+    @FXML
+    void notHoverBtnRemover(MouseEvent event) {
+
+    }
+
+    @FXML
+    void notHoverBtnSalvar(MouseEvent event) {
+
     }
 
     @FXML
     void notHoverBtnVoltar(MouseEvent event) {
-        // btnVoltar.setImage(new Image("../../images/pngVoltar.png"));
-        // btnVoltar.setStyle("-fx-cursor: hand;");
+
+    }
+
+    @FXML
+    void procurarVenda(MouseEvent event) {
+
+    }
+
+    @FXML
+    void removerProduto(ActionEvent event) {
+
+    }
+
+    @FXML
+    void salvarAlteracaoProduto(ActionEvent event) {
+
     }
 
     @FXML
@@ -127,4 +155,3 @@ public class ControllerAddNotaFiscal {
     }
 
 }
-
