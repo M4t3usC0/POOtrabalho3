@@ -73,7 +73,7 @@
           <TableColumn prefWidth="75.0" text="C2" />
         </columns>
       </TableView>
-      <Button fx:id="btnAlterarProduto" layoutX="53.0" layoutY="534.0" mnemonicParsing="false" onAction="#alterarProduto" onMouseExited="#notHoverBtnProcurar" onMouseMoved="#hoverBtnProcurar" prefHeight="46.0" prefWidth="174.0" style="-fx-background-radius: 50; -fx-background-color: #807d0a;" text="Alterar Produto" textFill="WHITE">
+      <Button fx:id="btnAlterarProduto" layoutX="53.0" layoutY="534.0" mnemonicParsing="false" onAction="#alterarProduto" onMouseExited="#notHoverBtnAlterar" onMouseMoved="#hoverBtnAlterar" prefHeight="46.0" prefWidth="174.0" style="-fx-background-radius: 50; -fx-background-color: #807d0a;" text="Alterar Produto" textFill="WHITE">
          <font>
             <Font size="20.0" />
          </font>
