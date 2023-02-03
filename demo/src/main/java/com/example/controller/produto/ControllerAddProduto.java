@@ -168,7 +168,7 @@ public class ControllerAddProduto {
 
     @FXML
     void hoverBtnVoltar(MouseEvent event) {
-        btnVoltar.setImage(new Image("../../images/pngVoltarHover.png"));
+        btnVoltar.setImage(new Image("com\\example\\images\\pngVoltarHover.png"));
         btnVoltar.setStyle("-fx-cursor: hand;");
     }
 
@@ -194,7 +194,7 @@ public class ControllerAddProduto {
 
     @FXML
     void notHoverBtnVoltar(MouseEvent event) {
-        btnVoltar.setImage(new Image("../../images/pngVoltar.png"));
+        btnVoltar.setImage(new Image("com\\example\\images\\pngVoltar.png"));
         btnVoltar.setStyle("-fx-cursor: hand;");
     }
 
