@@ -29,7 +29,6 @@ public class App extends Application {
             ListaProdutos listaProdutos = new ListaProdutos();
             ListaNotaFiscal listaNotaFiscal = new ListaNotaFiscal();
 
-
             Produto p1 = new Produto("Arroz", 5.00, 10, "Produto perecivel");
             Produto p2 = new Produto("Feijão", 4.00, 20, "Produto perecivel");
             Produto p3 = new ProdutoUnidade("Coca-Cola", 5.00, 5, "Produto não perecivel");
