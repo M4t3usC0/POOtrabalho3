@@ -3,6 +3,7 @@ package com.example.controller.produto;
 import com.example.baseclasse.Produto;
 import com.example.baseclasse.ProdutoUnidade;
 import com.example.controller.ControllerMenuPrincipal;
+import com.example.exceptions.geral.CampoVazioException;
 import com.example.listas.ListaProdutos;
 
 import javafx.event.ActionEvent;
@@ -72,19 +73,19 @@ public class ControllerAddProduto {
         try {
 
             if(nomeProduto.trim().isEmpty() || nomeProduto == null) {
-                throw new Exception("Nome do produto não pode ser vazio");
+                throw new CampoVazioException("Nome do produto não pode ser vazio");
             }
 
             if(descricaoProduto.trim().isEmpty() || descricaoProduto == null) {
-                throw new Exception("Descrição do produto não pode ser vazio");
+                throw new CampoVazioException("Descrição do produto não pode ser vazio");
             }
 
             if(precoProduto.trim().isEmpty() || precoProduto == null) {
-                throw new Exception("Preço do produto não pode ser vazio");
+                throw new CampoVazioException("Preço do produto não pode ser vazio");
             }
 
             if(quantidadeProduto.trim().isEmpty() || quantidadeProduto == null) {
-                throw new Exception("Quantidade do produto não pode ser vazio");
+                throw new CampoVazioException("Quantidade do produto não pode ser vazio");
             }
 
             if(!unidade && !fracionado) {
