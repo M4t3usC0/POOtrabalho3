@@ -151,6 +151,12 @@ public class ListaProdutos implements IProdutos {
         throw new SubQuantidadeNotSupportedException("Não foi possível subtrair a quantidade."); 
     }
 
+
+    public void substituirProduto(Produto produtoASerSubstituido, Produto produtoSubstituto) {
+        int index = produtos.indexOf(produtoASerSubstituido);
+        produtos.set(index, produtoSubstituto);
+    }
+
     @Override
     public String toString() {
         String conteudo = "";

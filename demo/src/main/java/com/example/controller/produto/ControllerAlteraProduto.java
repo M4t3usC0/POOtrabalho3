@@ -1,6 +1,7 @@
 package com.example.controller.produto;
 
 import com.example.baseclasse.Produto;
+import com.example.baseclasse.ProdutoFracionado;
 import com.example.baseclasse.ProdutoUnidade;
 import com.example.controller.ControllerMenuPrincipal;
 import com.example.listas.ListaProdutos;
@@ -113,13 +114,23 @@ public class ControllerAlteraProduto {
     }
 
     @FXML
-    void procurarProduto(ActionEvent event) {
+    void radioButtonUnidadeClick(ActionEvent event) {
+        radioButtonFracionado.setSelected(false);
+    }
 
+    @FXML
+    void radioButtonFracionadoClick(ActionEvent event) {
+        radioButtonUnidade.setSelected(false);
+    }
+
+
+    @FXML
+    void procurarProduto(ActionEvent event) {
         String codigo = textFieldCodigo.getText();
 
         try {
 
-            if(codigo.trim().isEmpty()) {
+            if (codigo.trim().isEmpty()) {
                 throw new Exception("Campo código deve ser preenchido com um inteiro!");
             }
 
@@ -146,8 +157,8 @@ public class ControllerAlteraProduto {
             textFieldNome.setText(nomeProduto);
             textFieldDescricao.setText(descricaoProduto);
             textFieldPreco.setText(precoProduto + "");
-            
-            if(produto instanceof ProdutoUnidade) {
+
+            if (produto instanceof ProdutoUnidade) {
                 int quantidadeProduto = (int) produto.getQuantidade();
                 textFieldQuantidade.setText(quantidadeProduto + "");
                 radioButtonUnidade.setSelected(true);
@@ -162,8 +173,6 @@ public class ControllerAlteraProduto {
         } catch (Exception e) {
             alertInterface("ERRO", e.getMessage(), AlertType.ERROR);
         }
-
-
     }
 
     @FXML
@@ -177,23 +186,23 @@ public class ControllerAlteraProduto {
 
         try {
 
-            if(nome.trim().isEmpty()) {
+            if (nome.trim().isEmpty()) {
                 throw new Exception("Campo nome deve ser preenchido!");
             }
 
-            if(descricao.trim().isEmpty()) {
+            if (descricao.trim().isEmpty()) {
                 throw new Exception("Campo descrição deve ser preenchido!");
             }
 
-            if(preco.trim().isEmpty()) {
+            if (preco.trim().isEmpty()) {
                 throw new Exception("Campo preço deve ser preenchido!");
             }
 
-            if(quantidade.trim().isEmpty()) {
+            if (quantidade.trim().isEmpty()) {
                 throw new Exception("Campo quantidade deve ser preenchido!");
             }
 
-            if(codigo.trim().isEmpty()) {
+            if (codigo.trim().isEmpty()) {
                 throw new Exception("Campo código deve ser preenchido!");
             }
 
@@ -219,14 +228,59 @@ public class ControllerAlteraProduto {
                 throw new Exception("Código deve ser um número inteiro");
             }
 
+            if (quantidadeDouble < 0) {
+                throw new Exception("Quantidade deve ser maior que zero");
+            }
 
+            if (precoDouble < 0) {
+                throw new Exception("Preço deve ser maior que zero");
+            }
 
+            if (codigoInt < 0) {
+                throw new Exception("Código deve ser maior que zero");
+            }
+
+            Produto produto = listaProdutos.getProduto(codigoInt);
+
+            if (radioButtonUnidade.isSelected()) {
+
+                int quantidadeInt = (int) quantidadeDouble;
+
+                if (quantidadeInt != quantidadeDouble) {
+                    throw new Exception("Quantidade deve ser um número inteiro");
+                }
+
+                if (produto instanceof ProdutoUnidade) {
+                    ProdutoUnidade produtoUnidade = (ProdutoUnidade) produto;
+                    produtoUnidade.setNome(nome);
+                    produtoUnidade.setDescricao(descricao);
+                    produtoUnidade.setPreco(precoDouble);
+                    produtoUnidade.setQuantidade(quantidadeInt);
+                } else {
+                    ProdutoUnidade produtoUnidade = new ProdutoUnidade(nome, precoDouble, quantidadeInt, descricao);
+                    produtoUnidade.setCodigo(produto.getCodigo());
+                    listaProdutos.substituirProduto(produto, produtoUnidade);
+                }
+
+            } else {
+
+                if (produto instanceof ProdutoFracionado) {
+                    ProdutoFracionado produtoFracionado = (ProdutoFracionado) produto;
+                    produtoFracionado.setNome(nome);
+                    produtoFracionado.setDescricao(descricao);
+                    produtoFracionado.setPreco(precoDouble);
+                    produtoFracionado.setQuantidade(quantidadeDouble);
+                } else {
+                    ProdutoFracionado produtoFracionado = new ProdutoFracionado(nome, precoDouble, quantidadeDouble,
+                            descricao);
+                    produtoFracionado.setCodigo(produto.getCodigo());
+                    listaProdutos.substituirProduto(produto, produtoFracionado);
+                }
+            }
 
         } catch (Exception e) {
-
+            alertInterface("ERRO", e.getMessage(), AlertType.ERROR);
         }
-
-
 
     }
 
@@ -253,4 +307,3 @@ public class ControllerAlteraProduto {
     }
 
 }
-

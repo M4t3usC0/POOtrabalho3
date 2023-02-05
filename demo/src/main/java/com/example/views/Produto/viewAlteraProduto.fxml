@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #03071e;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controller.produto.ControllerAlteraProduto">
+<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #03071e;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controller.produto.ControllerAlteraProduto">
    <children>
       <Label layoutX="182.0" layoutY="14.0" prefHeight="54.0" prefWidth="561.0" text="Alterar Informações do produto" textFill="WHITE">
          <font>
@@ -55,7 +55,7 @@
                   <Font size="16.0" />
                </font>
             </Label>
-            <TextField fx:id="textFieldQuantidade" layoutY="104.0" prefHeight="30.0" prefWidth="419.0" promptText="Digite a quantidade" style="-fx-background-radius: 20; -fx-background-color: white;">
+            <TextField fx:id="textFieldQuantidade" layoutY="104.0" prefHeight="30.0" prefWidth="419.0" promptText="Digite a quantidade (Exemplo: 5 ou 5.5)" style="-fx-background-radius: 20; -fx-background-color: white;">
                <font>
                   <Font size="18.0" />
                </font>
@@ -75,12 +75,12 @@
                   <Font size="16.0" />
                </font>
             </Label>
-            <RadioButton fx:id="radioButtonUnidade" layoutX="490.0" layoutY="117.0" mnemonicParsing="false" textFill="WHITE">
+            <RadioButton fx:id="radioButtonUnidade" layoutX="490.0" layoutY="117.0" mnemonicParsing="false" onAction="#radioButtonUnidadeClick" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </RadioButton>
-            <RadioButton fx:id="radioButtonFracionado" layoutX="658.0" layoutY="117.0" mnemonicParsing="false" textFill="WHITE">
+            <RadioButton fx:id="radioButtonFracionado" layoutX="658.0" layoutY="117.0" mnemonicParsing="false" onAction="#radioButtonFracionadoClick" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>

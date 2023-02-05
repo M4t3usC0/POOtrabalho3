@@ -1,6 +1,7 @@
 package com.example.controller.produto;
 
 import com.example.baseclasse.Produto;
+import com.example.baseclasse.ProdutoFracionado;
 import com.example.baseclasse.ProdutoUnidade;
 import com.example.controller.ControllerMenuPrincipal;
 import com.example.exceptions.geral.CampoVazioException;
@@ -130,7 +131,7 @@ public class ControllerAddProduto {
                 codigoProdutoAdicionado = produto.getCodigo();
             } else {
                 // Adicionar produto fracionado
-                Produto produto = new Produto(nomeProduto, precoProdutoDouble, quantidadeProdutoDouble, descricaoProduto);
+                ProdutoFracionado produto = new ProdutoFracionado(nomeProduto, precoProdutoDouble, quantidadeProdutoDouble, descricaoProduto);
                 listaProdutos.addProduto(produto);
                 codigoProdutoAdicionado = produto.getCodigo();
             }
