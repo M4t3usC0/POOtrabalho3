@@ -1,6 +1,5 @@
 package com.example.controller.produto;
 
-import com.example.baseclasse.Produto;
 import com.example.baseclasse.ProdutoFracionado;
 import com.example.baseclasse.ProdutoUnidade;
 import com.example.controller.ControllerMenuPrincipal;
@@ -125,12 +124,10 @@ public class ControllerAddProduto {
             int codigoProdutoAdicionado = 0;
 
             if(unidade == true) {
-                // Adicionar produto por unidade
                 ProdutoUnidade produto = new ProdutoUnidade(nomeProduto, precoProdutoDouble, quantidadeInt, descricaoProduto);
                 listaProdutos.addProduto(produto);
                 codigoProdutoAdicionado = produto.getCodigo();
             } else {
-                // Adicionar produto fracionado
                 ProdutoFracionado produto = new ProdutoFracionado(nomeProduto, precoProdutoDouble, quantidadeProdutoDouble, descricaoProduto);
                 listaProdutos.addProduto(produto);
                 codigoProdutoAdicionado = produto.getCodigo();

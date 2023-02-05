@@ -155,6 +155,7 @@ public class ListaProdutos implements IProdutos {
     public void substituirProduto(Produto produtoASerSubstituido, Produto produtoSubstituto) {
         int index = produtos.indexOf(produtoASerSubstituido);
         produtos.set(index, produtoSubstituto);
+        
     }
 
     @Override

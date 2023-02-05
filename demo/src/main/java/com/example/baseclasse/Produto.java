@@ -52,6 +52,8 @@ public class Produto {
     public void setQuantidade(double quantidade) { this.quantidade = quantidade; }
 
     public void setDescricao(String descricao) { this.descricao = descricao; }
+
+    public void diminuirCodigoUnico() { codigoUnico--; }
     
     @Override
     public String toString() {

@@ -1,6 +1,14 @@
 package com.example.controller.produto;
 
 
+import com.example.baseclasse.Produto;
+import com.example.baseclasse.ProdutoFracionado;
+import com.example.baseclasse.ProdutoUnidade;
+import com.example.controller.ControllerMenuPrincipal;
+import com.example.listas.ListaProdutos;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,6 +20,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -44,23 +53,23 @@ public class ControllerVisualizaProduto {
     @FXML
     private AnchorPane rootPane;
 
-    // @FXML
-    // private TableColumn<?, ?> tableColumnCarteiraMotoristaInfoCompleta;
+    @FXML
+    private TableColumn<Produto, Integer> tableColumnCodigo;
 
-    // @FXML
-    // private TableColumn<?, ?> tableColumnCpfInfoCompleta;
+    @FXML
+    private TableColumn<Produto, String> tableColumnNome;
 
-    // @FXML
-    // private TableColumn<?, ?> tableColumnEnderecoInfoCompleta;
+    @FXML
+    private TableColumn<Produto, Double> tableColumnPreco;
 
-    // @FXML
-    // private TableColumn<?, ?> tableColumnNomeInfoCompleta;
+    @FXML
+    private TableColumn<Produto, Double> tableColumnQuantidade;
 
-    // @FXML
-    // private TableColumn<?, ?> tableColumnTelefoneInfoCompleta;
+    @FXML
+    private TableColumn<Produto, String> tableColumnDescricao;
 
-    // @FXML
-    // private TableView<?> tableViewInfoCompleta;
+    @FXML
+    private TableView<Produto> tableViewInfoCompleta;
 
     @FXML
     private TextField textFieldCodigo;
@@ -78,8 +87,62 @@ public class ControllerVisualizaProduto {
     private TextField textFieldQuantidade;
 
     @FXML
-    void InformacaoTodosProdutos(ActionEvent event) {
+    private Pane paneCamposProduto;
 
+    private boolean mostrarEsconderCampos = true;
+
+    private boolean mostrarEsconderTabela = true;
+
+    private ListaProdutos listaProdutos;
+
+    @FXML
+    void initialize() {
+        tableColumnCodigo.setCellValueFactory(new PropertyValueFactory<Produto, Integer>("codigo"));
+        tableColumnNome.setCellValueFactory(new PropertyValueFactory<Produto, String>("nome"));
+        tableColumnPreco.setCellValueFactory(new PropertyValueFactory<Produto, Double>("preco"));
+        tableColumnQuantidade.setCellValueFactory(new PropertyValueFactory<Produto, Double>("quantidade"));
+        tableColumnDescricao.setCellValueFactory(new PropertyValueFactory<Produto, String>("descricao"));
+
+        listaProdutos = ControllerMenuPrincipal.getListaProdutos();
+    }
+
+    @FXML
+    void informacaoTodosProdutos(ActionEvent event) {
+        if(paneCamposProduto.isVisible()) {
+            paneCamposProduto.setVisible(false);
+            mostrarEsconderCampos = true;
+        } 
+
+        tableViewInfoCompleta.setVisible(mostrarEsconderTabela);
+        mostrarEsconderTabela = !mostrarEsconderTabela;
+
+        if(tableViewInfoCompleta.isVisible()) {
+            ObservableList<Produto> observableList = FXCollections.observableArrayList();
+
+            try {
+                String[] dadosProduto = listaProdutos.toString().split("\n");
+
+                for(String dados : dadosProduto) {
+                    String[] campos = dados.split(";");
+
+                    int codigo;
+
+                    try {
+                        codigo = Integer.parseInt(campos[0].split(": ")[1]);
+                    } catch (Exception e) {
+                        throw new Exception("Erro ao converter o código do produto para inteiro");
+                    }
+
+                    Produto produto = listaProdutos.getProduto(codigo);
+                    observableList.add(produto);
+                }
+
+            } catch (Exception e) {
+                alertInterface("ERRO", e.getMessage(), AlertType.ERROR);
+            }
+
+            tableViewInfoCompleta.setItems(observableList);
+        } 
     }
 
     @FXML
@@ -104,13 +167,68 @@ public class ControllerVisualizaProduto {
 
     @FXML
     void hoverBtnVoltar(MouseEvent event) {
-        btnVoltar.setImage(new Image("../../images/pngVoltarHover.png"));
+        btnVoltar.setImage(new Image("com\\example\\images\\pngVoltarHover.png"));
         btnVoltar.setStyle("-fx-cursor: hand;");
     }
 
     @FXML
     void infoProduto(ActionEvent event) {
+        String codigo = textFieldCodigo.getText();
 
+        try {
+
+            if(codigo.trim().isEmpty()) {
+                throw new Exception("Preencha o campo Código");
+            }
+
+            int codigoInt;
+
+            try {
+                codigoInt = Integer.parseInt(codigo);
+            } catch (Exception e) {
+                throw new Exception("Código deve ser um inteiro");
+            }
+
+            if(codigoInt < 0) {
+                throw new Exception("Código deve ser um inteiro positivo");
+            }
+
+            Produto produto;
+
+            try {
+                produto = listaProdutos.getProduto(codigoInt);
+            } catch (Exception e) {
+                throw e;
+            }
+
+            String nomeProduto = produto.getNome();
+            String descricaoProduto = produto.getDescricao();
+            double precoProduto = produto.getPreco();
+
+            textFieldNome.setText(nomeProduto);
+            textFieldDescricao.setText(descricaoProduto);
+            textFieldPreco.setText(precoProduto + "");
+            
+            if(produto instanceof ProdutoUnidade) {
+                ProdutoUnidade produtoUnidade = (ProdutoUnidade) produto;
+                int quantidadeProduto = (int) produtoUnidade.getQuantidade();
+
+                radioButtonFracionado.setSelected(false);
+                radioButtonUnidade.setSelected(true);
+                textFieldQuantidade.setText(quantidadeProduto + "");
+
+            } else if(produto instanceof ProdutoFracionado) {
+                ProdutoFracionado produtoFracionado = (ProdutoFracionado) produto;
+                double quantidadeProduto = produtoFracionado.getQuantidade();
+
+                radioButtonFracionado.setSelected(true);
+                radioButtonUnidade.setSelected(false);
+                textFieldQuantidade.setText(quantidadeProduto + "");
+            }
+
+        } catch (Exception e) {
+            alertInterface("ERRO", e.getMessage(), AlertType.ERROR);
+        }
     }
 
     @FXML
@@ -126,7 +244,13 @@ public class ControllerVisualizaProduto {
 
     @FXML
     void mostrarInformacaoProduto(ActionEvent event) {
+        if(tableViewInfoCompleta.isVisible()) {
+            tableViewInfoCompleta.setVisible(false);
+            mostrarEsconderTabela = true;
+        } 
 
+        paneCamposProduto.setVisible(mostrarEsconderCampos);
+        mostrarEsconderCampos = !mostrarEsconderCampos;
     }
 
     @FXML
@@ -151,7 +275,7 @@ public class ControllerVisualizaProduto {
 
     @FXML
     void notHoverBtnVoltar(MouseEvent event) {
-        btnVoltar.setImage(new Image("../../images/pngVoltarHover.png"));
+        btnVoltar.setImage(new Image("com\\example\\images\\pngVoltar.png"));
         btnVoltar.setStyle("-fx-cursor: hand;");
     }
 
@@ -164,7 +288,6 @@ public class ControllerVisualizaProduto {
             rootPane.getChildren().clear();
             rootPane.getChildren().add(cmdPane);
         } catch (Exception e) {
-            System.out.println(e);
             alertInterface("ERRO", "Não foi possível voltar para o menu principal", AlertType.ERROR);
         }
     }

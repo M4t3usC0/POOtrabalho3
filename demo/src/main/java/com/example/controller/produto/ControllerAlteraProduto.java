@@ -15,6 +15,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -69,48 +70,35 @@ public class ControllerAlteraProduto {
     }
 
     @FXML
-    void hoverBtnLimpar(MouseEvent event) {
-
-    }
-
-    @FXML
-    void hoverBtnProcurar(MouseEvent event) {
-
-    }
-
-    @FXML
-    void hoverBtnSalvar(MouseEvent event) {
-
-    }
-
-    @FXML
-    void hoverBtnVoltar(MouseEvent event) {
-
-    }
-
-    @FXML
     void limparCampos(ActionEvent event) {
-
+        textFieldCodigo.setText("");
+        textFieldNome.setText("");
+        textFieldDescricao.setText("");
+        textFieldPreco.setText("");
+        textFieldQuantidade.setText("");
+        radioButtonFracionado.setSelected(false);
+        radioButtonUnidade.setSelected(false);
     }
 
     @FXML
     void notHoverBtnLimpar(MouseEvent event) {
-
+        btnLimpar.setStyle("-fx-background-color: #747474;-fx-cursor: hand; -fx-background-radius: 50;");
     }
 
     @FXML
     void notHoverBtnProcurar(MouseEvent event) {
-
+        btnProcurar.setStyle("-fx-background-color: #807d0a;-fx-cursor: hand; -fx-background-radius: 50;");
     }
 
     @FXML
     void notHoverBtnSalvar(MouseEvent event) {
-
+        btnSalvar.setStyle("-fx-background-color: #2b6b2a;-fx-cursor: hand; -fx-background-radius: 50;");
     }
 
     @FXML
     void notHoverBtnVoltar(MouseEvent event) {
-
+        btnVoltar.setImage(new Image("com\\example\\images\\pngVoltar.png"));
+        btnVoltar.setStyle("-fx-cursor: hand;");
     }
 
     @FXML
@@ -259,6 +247,7 @@ public class ControllerAlteraProduto {
                 } else {
                     ProdutoUnidade produtoUnidade = new ProdutoUnidade(nome, precoDouble, quantidadeInt, descricao);
                     produtoUnidade.setCodigo(produto.getCodigo());
+                    produtoUnidade.diminuirCodigoUnico();
                     listaProdutos.substituirProduto(produto, produtoUnidade);
                 }
 
@@ -274,9 +263,13 @@ public class ControllerAlteraProduto {
                     ProdutoFracionado produtoFracionado = new ProdutoFracionado(nome, precoDouble, quantidadeDouble,
                             descricao);
                     produtoFracionado.setCodigo(produto.getCodigo());
+                    produtoFracionado.diminuirCodigoUnico();
                     listaProdutos.substituirProduto(produto, produtoFracionado);
                 }
             }
+
+            alertInterface("Sucesso", "Produto com código " + produto.getCodigo() + " alterado com sucesso!" , AlertType.INFORMATION);
+            limparCampos(null);
 
         } catch (Exception e) {
             alertInterface("ERRO", e.getMessage(), AlertType.ERROR);
@@ -304,6 +297,27 @@ public class ControllerAlteraProduto {
         alert.setHeaderText(null);
         alert.setContentText(mensagem);
         alert.showAndWait();
+    }
+
+    @FXML
+    void hoverBtnLimpar(MouseEvent event) {
+        btnLimpar.setStyle("-fx-background-color: #686868;-fx-cursor: hand; -fx-background-radius: 50;");
+    }
+
+    @FXML
+    void hoverBtnProcurar(MouseEvent event) {
+        btnProcurar.setStyle("-fx-background-color: #676508;-fx-cursor: hand; -fx-background-radius: 50;");
+    }
+
+    @FXML
+    void hoverBtnSalvar(MouseEvent event) {
+        btnSalvar.setStyle("-fx-background-color: #245823;-fx-cursor: hand; -fx-background-radius: 50;");
+    }
+
+    @FXML
+    void hoverBtnVoltar(MouseEvent event) {
+        btnVoltar.setImage(new Image("com\\example\\images\\pngVoltarHover.png"));
+        btnVoltar.setStyle("-fx-cursor: hand;");
     }
 
 }

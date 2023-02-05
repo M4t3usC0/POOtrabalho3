@@ -1,6 +1,5 @@
 package com.example;
 
-import com.example.baseclasse.Produto;
 import com.example.baseclasse.ProdutoFracionado;
 import com.example.baseclasse.ProdutoUnidade;
 import com.example.controller.ControllerMenuPrincipal;
@@ -41,8 +40,6 @@ public class App extends Application {
             ControllerMenuPrincipal controller = fxmlLoader.getController();
             controller.setListaProdutos(listaProdutos);
             controller.setListaNotaFiscal(listaNotaFiscal);
-
-            
 
             // primaryStage.getIcons().add(new Image("images/pngIcon.png"));
             primaryStage.setTitle("Mercado Central");
