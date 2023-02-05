@@ -44,40 +44,8 @@ public class ControllerRemoverProduto {
     }
 
     @FXML
-    void hoverBtnLimpar(MouseEvent event) {
-        btnLimpar.setStyle("-fx-background-color: #686868;-fx-cursor: hand; -fx-background-radius: 50;");
-    }
-
-    @FXML
-    void hoverBtnRemover(MouseEvent event) {
-        btnRemover.setStyle("-fx-background-color: #682121;-fx-cursor: hand; -fx-background-radius: 50;");
-    }
-
-    @FXML
-    void hoverBtnVoltar(MouseEvent event) {
-        btnVoltar.setImage(new Image("com\\example\\images\\pngVoltarHover.png"));
-        btnVoltar.setStyle("-fx-cursor: hand;");
-    }
-
-    @FXML
     void limparCampos(ActionEvent event) {
         textFieldCodigo.clear();
-    }
-
-    @FXML
-    void notHoverBtnLimpar(MouseEvent event) {
-        btnLimpar.setStyle("-fx-background-color: #747474;-fx-cursor: hand; -fx-background-radius: 50;");
-    }
-
-    @FXML
-    void notHoverBtnRemover(MouseEvent event) {
-        btnRemover.setStyle("-fx-background-color: #7d2727;-fx-cursor: hand; -fx-background-radius: 50;");
-    }
-
-    @FXML
-    void notHoverBtnVoltar(MouseEvent event) {
-        btnVoltar.setImage(new Image("com\\example\\images\\pngVoltar.png"));
-        btnVoltar.setStyle("-fx-cursor: hand;");
     }
 
     @FXML
@@ -145,6 +113,38 @@ public class ControllerRemoverProduto {
         alert.setHeaderText(null);
         alert.setContentText("Você deseja remover o produto?");
         return alert.showAndWait();
+    }
+
+    @FXML
+    void hoverBtnLimpar(MouseEvent event) {
+        btnLimpar.setStyle("-fx-background-color: #686868;-fx-cursor: hand; -fx-background-radius: 50;");
+    }
+
+    @FXML
+    void hoverBtnRemover(MouseEvent event) {
+        btnRemover.setStyle("-fx-background-color: #682121;-fx-cursor: hand; -fx-background-radius: 50;");
+    }
+
+    @FXML
+    void hoverBtnVoltar(MouseEvent event) {
+        btnVoltar.setImage(new Image("com\\example\\images\\pngVoltarHover.png"));
+        btnVoltar.setStyle("-fx-cursor: hand;");
+    }
+
+    @FXML
+    void notHoverBtnLimpar(MouseEvent event) {
+        btnLimpar.setStyle("-fx-background-color: #747474;-fx-cursor: hand; -fx-background-radius: 50;");
+    }
+
+    @FXML
+    void notHoverBtnRemover(MouseEvent event) {
+        btnRemover.setStyle("-fx-background-color: #7d2727;-fx-cursor: hand; -fx-background-radius: 50;");
+    }
+
+    @FXML
+    void notHoverBtnVoltar(MouseEvent event) {
+        btnVoltar.setImage(new Image("com\\example\\images\\pngVoltar.png"));
+        btnVoltar.setStyle("-fx-cursor: hand;");
     }
 
 }

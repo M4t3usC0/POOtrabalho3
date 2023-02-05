@@ -146,32 +146,6 @@ public class ControllerVisualizaProduto {
     }
 
     @FXML
-    void hoverBtnInformacaoProduto(MouseEvent event) {
-        btnInformacaoProduto.setStyle("-fx-background-color: #245823;-fx-cursor: hand; -fx-background-radius: 50;");
-    }
-
-    @FXML
-    void hoverBtnInformacaoTodosProdutos(MouseEvent event) {
-        btnInformacaoTodosProdutos.setStyle("-fx-background-color: #245823;-fx-cursor: hand; -fx-background-radius: 50;");
-    }
-
-    @FXML
-    void hoverBtnLimpar(MouseEvent event) {
-        btnLimpar.setStyle("-fx-background-color: #686868;-fx-cursor: hand; -fx-background-radius: 50;");
-    }
-
-    @FXML
-    void hoverBtnPesquisar(MouseEvent event) {
-        btnPesquisar.setStyle("-fx-background-color: #245823;-fx-cursor: hand; -fx-background-radius: 50;");
-    }
-
-    @FXML
-    void hoverBtnVoltar(MouseEvent event) {
-        btnVoltar.setImage(new Image("com\\example\\images\\pngVoltarHover.png"));
-        btnVoltar.setStyle("-fx-cursor: hand;");
-    }
-
-    @FXML
     void infoProduto(ActionEvent event) {
         String codigo = textFieldCodigo.getText();
 
@@ -254,6 +228,27 @@ public class ControllerVisualizaProduto {
     }
 
     @FXML
+    void voltarParaPrincipal(MouseEvent event) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../../views/viewIndex.fxml"));
+            Pane cmdPane = (Pane) fxmlLoader.load();
+
+            rootPane.getChildren().clear();
+            rootPane.getChildren().add(cmdPane);
+        } catch (Exception e) {
+            alertInterface("ERRO", "Não foi possível voltar para o menu principal", AlertType.ERROR);
+        }
+    }
+
+    void alertInterface(String titulo, String mensagem, AlertType tipo) {
+        Alert alert = new Alert(tipo);
+        alert.setTitle(titulo);
+        alert.setHeaderText(null);
+        alert.setContentText(mensagem);
+        alert.showAndWait();
+    }
+
+    @FXML
     void notHoverBtnInformacaoProduto(MouseEvent event) {
         btnInformacaoProduto.setStyle("-fx-background-color: #2b6b2a;-fx-cursor: hand; -fx-background-radius: 50;");
     }
@@ -280,24 +275,29 @@ public class ControllerVisualizaProduto {
     }
 
     @FXML
-    void voltarParaPrincipal(MouseEvent event) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../../views/viewIndex.fxml"));
-            Pane cmdPane = (Pane) fxmlLoader.load();
-
-            rootPane.getChildren().clear();
-            rootPane.getChildren().add(cmdPane);
-        } catch (Exception e) {
-            alertInterface("ERRO", "Não foi possível voltar para o menu principal", AlertType.ERROR);
-        }
+    void hoverBtnInformacaoProduto(MouseEvent event) {
+        btnInformacaoProduto.setStyle("-fx-background-color: #245823;-fx-cursor: hand; -fx-background-radius: 50;");
     }
 
-    void alertInterface(String titulo, String mensagem, AlertType tipo) {
-        Alert alert = new Alert(tipo);
-        alert.setTitle(titulo);
-        alert.setHeaderText(null);
-        alert.setContentText(mensagem);
-        alert.showAndWait();
+    @FXML
+    void hoverBtnInformacaoTodosProdutos(MouseEvent event) {
+        btnInformacaoTodosProdutos.setStyle("-fx-background-color: #245823;-fx-cursor: hand; -fx-background-radius: 50;");
+    }
+
+    @FXML
+    void hoverBtnLimpar(MouseEvent event) {
+        btnLimpar.setStyle("-fx-background-color: #686868;-fx-cursor: hand; -fx-background-radius: 50;");
+    }
+
+    @FXML
+    void hoverBtnPesquisar(MouseEvent event) {
+        btnPesquisar.setStyle("-fx-background-color: #245823;-fx-cursor: hand; -fx-background-radius: 50;");
+    }
+
+    @FXML
+    void hoverBtnVoltar(MouseEvent event) {
+        btnVoltar.setImage(new Image("com\\example\\images\\pngVoltarHover.png"));
+        btnVoltar.setStyle("-fx-cursor: hand;");
     }
 
 }

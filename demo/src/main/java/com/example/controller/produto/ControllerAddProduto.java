@@ -155,22 +155,6 @@ public class ControllerAddProduto {
     }
 
     @FXML
-    void hoverBtnAdicionar(MouseEvent event) {
-        btnAdicionar.setStyle("-fx-background-color: #245823;-fx-cursor: hand; -fx-background-radius: 50;");
-    }
-
-    @FXML
-    void hoverBtnLimpar(MouseEvent event) {
-        btnLimpar.setStyle("-fx-background-color: #686868;-fx-cursor: hand; -fx-background-radius: 50;");
-    }
-
-    @FXML
-    void hoverBtnVoltar(MouseEvent event) {
-        btnVoltar.setImage(new Image("com\\example\\images\\pngVoltarHover.png"));
-        btnVoltar.setStyle("-fx-cursor: hand;");
-    }
-
-    @FXML
     void limparCampos(ActionEvent event) {
         textFieldNome.clear();
         textFieldDescricao.clear();
@@ -178,22 +162,6 @@ public class ControllerAddProduto {
         textFieldQuantidade.clear();
         radioButtonFracionado.setSelected(false);
         radioButtonUnidade.setSelected(false);
-    }
-
-    @FXML
-    void notHoverBtnAdicionar(MouseEvent event) {
-        btnAdicionar.setStyle("-fx-background-color: #2b6b2a;-fx-cursor: hand; -fx-background-radius: 50;");
-    }
-
-    @FXML
-    void notHoverBtnLimpar(MouseEvent event) {
-        btnLimpar.setStyle("-fx-background-color: #747474;-fx-cursor: hand; -fx-background-radius: 50;");
-    }
-
-    @FXML
-    void notHoverBtnVoltar(MouseEvent event) {
-        btnVoltar.setImage(new Image("com\\example\\images\\pngVoltar.png"));
-        btnVoltar.setStyle("-fx-cursor: hand;");
     }
 
     @FXML
@@ -217,6 +185,39 @@ public class ControllerAddProduto {
         alert.setContentText(mensagem);
         alert.showAndWait();
     }
+
+    @FXML
+    void notHoverBtnAdicionar(MouseEvent event) {
+        btnAdicionar.setStyle("-fx-background-color: #2b6b2a;-fx-cursor: hand; -fx-background-radius: 50;");
+    }
+
+    @FXML
+    void notHoverBtnLimpar(MouseEvent event) {
+        btnLimpar.setStyle("-fx-background-color: #747474;-fx-cursor: hand; -fx-background-radius: 50;");
+    }
+
+    @FXML
+    void notHoverBtnVoltar(MouseEvent event) {
+        btnVoltar.setImage(new Image("com\\example\\images\\pngVoltar.png"));
+        btnVoltar.setStyle("-fx-cursor: hand;");
+    }
+
+    @FXML
+    void hoverBtnAdicionar(MouseEvent event) {
+        btnAdicionar.setStyle("-fx-background-color: #245823;-fx-cursor: hand; -fx-background-radius: 50;");
+    }
+
+    @FXML
+    void hoverBtnLimpar(MouseEvent event) {
+        btnLimpar.setStyle("-fx-background-color: #686868;-fx-cursor: hand; -fx-background-radius: 50;");
+    }
+
+    @FXML
+    void hoverBtnVoltar(MouseEvent event) {
+        btnVoltar.setImage(new Image("com\\example\\images\\pngVoltarHover.png"));
+        btnVoltar.setStyle("-fx-cursor: hand;");
+    }
+
 
 }
 

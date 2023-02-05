@@ -81,27 +81,6 @@ public class ControllerAlteraProduto {
     }
 
     @FXML
-    void notHoverBtnLimpar(MouseEvent event) {
-        btnLimpar.setStyle("-fx-background-color: #747474;-fx-cursor: hand; -fx-background-radius: 50;");
-    }
-
-    @FXML
-    void notHoverBtnProcurar(MouseEvent event) {
-        btnProcurar.setStyle("-fx-background-color: #807d0a;-fx-cursor: hand; -fx-background-radius: 50;");
-    }
-
-    @FXML
-    void notHoverBtnSalvar(MouseEvent event) {
-        btnSalvar.setStyle("-fx-background-color: #2b6b2a;-fx-cursor: hand; -fx-background-radius: 50;");
-    }
-
-    @FXML
-    void notHoverBtnVoltar(MouseEvent event) {
-        btnVoltar.setImage(new Image("com\\example\\images\\pngVoltar.png"));
-        btnVoltar.setStyle("-fx-cursor: hand;");
-    }
-
-    @FXML
     void radioButtonUnidadeClick(ActionEvent event) {
         radioButtonFracionado.setSelected(false);
     }
@@ -317,6 +296,27 @@ public class ControllerAlteraProduto {
     @FXML
     void hoverBtnVoltar(MouseEvent event) {
         btnVoltar.setImage(new Image("com\\example\\images\\pngVoltarHover.png"));
+        btnVoltar.setStyle("-fx-cursor: hand;");
+    }
+
+    @FXML
+    void notHoverBtnLimpar(MouseEvent event) {
+        btnLimpar.setStyle("-fx-background-color: #747474;-fx-cursor: hand; -fx-background-radius: 50;");
+    }
+
+    @FXML
+    void notHoverBtnProcurar(MouseEvent event) {
+        btnProcurar.setStyle("-fx-background-color: #807d0a;-fx-cursor: hand; -fx-background-radius: 50;");
+    }
+
+    @FXML
+    void notHoverBtnSalvar(MouseEvent event) {
+        btnSalvar.setStyle("-fx-background-color: #2b6b2a;-fx-cursor: hand; -fx-background-radius: 50;");
+    }
+
+    @FXML
+    void notHoverBtnVoltar(MouseEvent event) {
+        btnVoltar.setImage(new Image("com\\example\\images\\pngVoltar.png"));
         btnVoltar.setStyle("-fx-cursor: hand;");
     }
 
