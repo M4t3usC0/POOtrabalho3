@@ -21,45 +21,91 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
+/**
+ * Classe responsável por controlar a tela de adicionar produto
+* @author Ricardo, Tales, Mateus, Mauricio
+* @since jan 2023
+ */
 public class ControllerAddProduto {
 
+    /**
+     * btnAdicionar usado para adicionar um produto
+     */
     @FXML
     private Button btnAdicionar;
 
+    /**
+     * btnLimpar usado para limpar os campos
+     */
     @FXML
     private Button btnLimpar;
 
+    /**
+     * btnVoltar usado para voltar para a tela de menu principal
+     */
     @FXML
     private ImageView btnVoltar;
 
+    /**
+     * radioButtonFracionado usado para selecionar se o produto é fracionado
+     */
     @FXML
     private RadioButton radioButtonFracionado;
 
+    /**
+     * radioButtonUnidade usado para selecionar se o produto é por unidade
+     */
     @FXML
     private RadioButton radioButtonUnidade;
 
+    /**
+     * rootPane usado para carregar a tela de adicionar produto
+     */
     @FXML
     private AnchorPane rootPane;
 
+    /**
+     * textFieldDescricao usado para receber a descrição do produto
+     */
     @FXML
     private TextArea textFieldDescricao;
 
+    /**
+     * textFieldNome usado para receber o nome do produto
+     */
     @FXML
     private TextField textFieldNome;
 
+    /**
+     * textFieldPreco usado para receber o preço do produto
+     */
     @FXML
     private TextField textFieldPreco;
 
+    /**
+     * textFieldQuantidade usado para receber a quantidade do produto
+     */
     @FXML
     private TextField textFieldQuantidade;
 
+    /**
+     * listaProdutos usado para receber a lista de produtos
+     */
     private ListaProdutos listaProdutos;
 
+    /**
+     * Método usado para inicializar a lista de produtos
+     *
+     */
     @FXML
     void initialize() {
         listaProdutos = ControllerMenuPrincipal.getListaProdutos();
     }
 
+    /**
+    * Método usado para adicionar um produto a partir do nome, descrição, preço, quantidade, se é fracionado ou por unidade
+    * @param event evento de clicar no botão
+    */
     @FXML
     void adicionarProduto(ActionEvent event) {
 
@@ -140,6 +186,9 @@ public class ControllerAddProduto {
 
     }
 
+    /**
+    * Método usado descartar a seleção do radioButtonFracionado
+    */
     @FXML
     void radioButtonUnidadeClick(ActionEvent event) {
         if(radioButtonFracionado.isSelected()) {
@@ -147,6 +196,9 @@ public class ControllerAddProduto {
         }
     }
 
+    /**
+    * Método usado descartar a seleção do radioButtonUnidade
+    */
     @FXML
     void radioButtonFracionadoClick(ActionEvent event) {
         if(radioButtonUnidade.isSelected()) {
@@ -154,6 +206,10 @@ public class ControllerAddProduto {
         }
     }
 
+    /**
+    * Método usado para limpar os campos de texto
+    * @param event evento de clicar no botão
+    */
     @FXML
     void limparCampos(ActionEvent event) {
         textFieldNome.clear();
@@ -164,6 +220,10 @@ public class ControllerAddProduto {
         radioButtonUnidade.setSelected(false);
     }
 
+    /**
+    * Método usado para voltar para a tela principal
+    * @param event evento de clicar no botão
+    */
     @FXML
     void voltarParaPrincipal(MouseEvent event) {
         try {
@@ -178,6 +238,12 @@ public class ControllerAddProduto {
         }
     }
 
+    /**
+    * Método usado para mostrar uma mensagem de alerta
+    * @param titulo título da mensagem
+    * @param mensagem mensagem a ser mostrada
+    * @param tipo tipo de alerta
+    */
     void alertInterface(String titulo, String mensagem, AlertType tipo) {
         Alert alert = new Alert(tipo);
         alert.setTitle(titulo);
@@ -186,11 +252,19 @@ public class ControllerAddProduto {
         alert.showAndWait();
     }
 
+    /**
+     * Efeito de hover ao tirar o mouse do botão de adicionar
+     * @param event evento de hover ao tirar o mouse do botão
+     */
     @FXML
     void notHoverBtnAdicionar(MouseEvent event) {
         btnAdicionar.setStyle("-fx-background-color: #2b6b2a;-fx-cursor: hand; -fx-background-radius: 50;");
     }
 
+    /**
+     * Efeito de hover ao tirar o mouse do botão de limpar
+     * @param event efeito de hover ao tirar o mouse do botão
+     */
     @FXML
     void notHoverBtnLimpar(MouseEvent event) {
         btnLimpar.setStyle("-fx-background-color: #747474;-fx-cursor: hand; -fx-background-radius: 50;");
@@ -202,22 +276,32 @@ public class ControllerAddProduto {
         btnVoltar.setStyle("-fx-cursor: hand;");
     }
 
+    /**
+     * Efeito de hover ao passar o mouse no botão de adicionar
+     * @param event evento de hover ao passar o mouse no botão
+     */
     @FXML
     void hoverBtnAdicionar(MouseEvent event) {
         btnAdicionar.setStyle("-fx-background-color: #245823;-fx-cursor: hand; -fx-background-radius: 50;");
     }
 
+    /**
+     * Efeito de hover ao tirar o mouse do botão de limpar
+     * @param event efeito de hover ao tirar o mouse do botão
+     */
     @FXML
     void hoverBtnLimpar(MouseEvent event) {
         btnLimpar.setStyle("-fx-background-color: #686868;-fx-cursor: hand; -fx-background-radius: 50;");
     }
 
+    /**
+     * Efeito de hover ao passar o mouse no botão de voltar
+     * @param event evento hover ao passar o mouse no botão de voltar
+     */
     @FXML
     void hoverBtnVoltar(MouseEvent event) {
         btnVoltar.setImage(new Image("com\\example\\images\\pngVoltarHover.png"));
         btnVoltar.setStyle("-fx-cursor: hand;");
     }
 
-
 }
-

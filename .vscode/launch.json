@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch App",
+            "request": "launch",
+            "mainClass": "empresa.App",
+            "projectName": ""
+        },
+        {
+            "type": "java",
             "name": "Launch Current File",
             "request": "launch",
             "mainClass": "${file}"
@@ -16,7 +23,7 @@
             "request": "launch",
             "mainClass": "com.example.App",
             "projectName": "demo",
-            "vmArgs": "--module-path \"javafx-sdk-19/lib\" --add-modules javafx.controls,javafx.fxml" 
+            "vmArgs": "--module-path \"javafx-sdk-19/lib\" --add-modules javafx.controls,javafx.fxml"
         }
     ]
 }

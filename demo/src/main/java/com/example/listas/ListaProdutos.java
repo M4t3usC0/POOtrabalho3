@@ -165,7 +165,9 @@ public class ListaProdutos implements IProdutos {
         return produtos.isEmpty();
     }
 
-    public ArrayList<Produto> getArrayProdutos() { return produtos; }
+    public int size() {
+        return produtos.size();
+    }
 
     @Override
     public String toString() {

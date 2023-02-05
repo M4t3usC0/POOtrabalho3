@@ -54,4 +54,8 @@ public class ListaItem {
         return listaItens;
     }
 
+    public int size() {
+        return listaItens.size();
+    }
+
 }

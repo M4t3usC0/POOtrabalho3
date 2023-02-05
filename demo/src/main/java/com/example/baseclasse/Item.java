@@ -2,14 +2,41 @@ package com.example.baseclasse;
 
 import com.example.exceptions.produto.QuantidadeNotSupportedException;
 
+/**
+* A classe Item modela um item do sistema.
+* @author Ricardo, Tales, Mateus, Mauricio
+* @since jan 2023
+*/
 public class Item {
 
+    /**
+    * O atributo produto, do tipo Produto, identifica o produto do item.
+    */
     private Produto produto;
+    /**
+    * O atributo codigo, do tipo int, identifica o código do item.
+    */
     private int codigo;
+    /**
+    * O atributo nome, do tipo String, identifica o nome do item.
+    */
     private String nome;
+    /**
+    * O atributo preco, do tipo double, identifica o preço do item.
+    */
     private double preco;
+    /**
+    * O atributo quantidade, do tipo double, identifica a quantidade do item.
+    */
     private double quantidade;
 
+    /**
+    * Construtor default da classe Item<br>
+    * <b>Uso: </b>
+    * Item item = new Item(produto, quantidade);<br><br>
+    * @param produto Produto que identifica o produto do item
+    * @param quantidade double que identifica a quantidade do item
+    */
     public Item(Produto produto, double quantidade) {
 
         if(produto == null) {
@@ -35,26 +62,59 @@ public class Item {
         this.quantidade = quantidade;
     }
 
+    /**
+    * @return String que identifica o nome do item
+    */
     public String getNome() { return nome; }
 
+    /**
+    * @return Produto que identifica o produto do item
+    */
     public Produto getProduto() { return produto; }
 
+    /**
+    * @return double que identifica o preço do item
+    */
     public double getPreco() { return preco; }
 
+    /**
+    * @return double que identifica a quantidade do item
+    */
     public double getQuantidade() { return quantidade; }
 
+    /**
+    * @return int que identifica o código do item
+    */
     public int getCodigo() { return codigo; }
 
+    /**
+    @param codigo int que identifica o código do item
+    */
     public void setCodigo(int codigo) { this.codigo = codigo; }
 
+    /**
+    @param nome String que identifica o nome do item
+    */
     public void setNome(String nome) { this.nome = nome; }
 
+    /**
+    @param preco double que identifica o preço do item
+    */
     public void setPreco(double preco) { this.preco = preco; }
 
+    /**
+    @param produto Produto que identifica o produto do item
+    */
     public void setProduto(Produto produto) { this.produto = produto; }
 
-    public void setQuantidade(int quantidade) { this.quantidade = quantidade; }
+    /**
+    @param quantidade double que identifica a quantidade do item
+    */
+    public void setQuantidade(double quantidade) { this.quantidade = quantidade; }
 
+    /** 
+     * @return String que identifica as informações do item
+     */
     @Override
     public String toString() {
         return produto.toString() + ";" + 

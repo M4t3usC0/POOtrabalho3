@@ -1,4 +1,4 @@
-package com.example.controller.notaFiscal;
+package com.example.controller.notafiscal;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -143,55 +143,52 @@ public class ControllerAddNotaFiscal {
             Item item;
 
             if (produto instanceof ProdutoUnidade) {
-
                 int quantidadeInt = (int) quantidadeDouble;
 
                 if (quantidadeInt != quantidadeDouble) {
                     throw new Exception("O campo quantidade deve ser um número inteiro");
                 }
+            }
 
-                ProdutoUnidade produtoUnidade = (ProdutoUnidade) produto;
+            double quantidadeTotal = 0;
 
-                int quantidadeTotal = 0;
+            for(int i = 0; i < observableList.size(); i++) {
+                Item itemLista = observableList.get(i);
 
-                for(int i = 0; i < observableList.size(); i++) {
-                    Item itemLista = observableList.get(i);
-
-                    if(itemLista.getCodigo() == produtoUnidade.getCodigo()) {
-                        quantidadeTotal += itemLista.getQuantidade();
-                        if(quantidadeTotal + quantidadeInt > produtoUnidade.getQuantidade()) {
-                            throw new Exception("A quantidade de produtos em estoque é menor que a quantidade solicitada");
-                        }
-                        
+                if(itemLista.getCodigo() == produto.getCodigo()) {
+                    quantidadeTotal += itemLista.getQuantidade();
+                    if(quantidadeTotal + quantidadeDouble > produto.getQuantidade()) {
+                        throw new Exception("A quantidade de produtos em estoque é menor que a quantidade solicitada");
                     }
                 }
+            }    
 
+            boolean flag = true;
+            Item itemLista = null;
 
-                item = new Item(produtoUnidade, quantidadeInt);
+            for(int i = 0; i < observableList.size(); i++) {
+                itemLista = observableList.get(i);
+
+                if(itemLista.getCodigo() == produto.getCodigo()) {
+                    observableList.remove(itemLista);
+                    itemLista.setQuantidade(itemLista.getQuantidade() + quantidadeDouble);
+                    flag = false;
+                    break;
+                }
+            }
+
+            if(flag) {
+                if(listaProdutos.getProduto(codigoInt).getQuantidade() < quantidadeDouble) {
+                    throw new Exception("Quantidade de produtos no estoque é menor que a quantidade que deseja vender");
+                }
+                item = new Item(produto, quantidadeDouble);
                 listaItem.addItem(item);
+                observableList.add(item);
             } else {
-                ProdutoFracionado produtoFracionado = (ProdutoFracionado) produto;
-
-                double quantidadeTotal = 0;
-
-                for(int i = 0; i < observableList.size(); i++) {
-                    Item itemLista = observableList.get(i);
-
-                    if(itemLista.getCodigo() == produtoFracionado.getCodigo()) {
-                        quantidadeTotal += itemLista.getQuantidade();
-                        if(quantidadeTotal + quantidadeDouble > produtoFracionado.getQuantidade()) {
-                            throw new Exception("A quantidade de produtos em estoque é menor que a quantidade solicitada");
-                        }
-                        
-                    }
-                }
-
-                item = new Item(produtoFracionado, quantidadeDouble);
-                listaItem.addItem(item);
+                observableList.add(itemLista);
             }
 
             limparCampos(null);
-            observableList.add(item);
             tableProdutos.setItems(observableList);
 
         } catch (Exception e) {
@@ -221,22 +218,26 @@ public class ControllerAddNotaFiscal {
                 double quantidadeSub = item.getQuantidade();
                 int codigoProduto = item.getCodigo();
 
-
                 listaProdutos.subQuantidade(codigoProduto, quantidadeSub);
             }
 
-            listaNotaFiscal.addNotaFiscal(new NotaFiscal(dataCalendar, listaItem));
+            if(listaItem.size() == 0) {
+                throw new Exception("Não há itens na nota fiscal");
+            }
+
+            NotaFiscal notaFiscal = new NotaFiscal(dataCalendar, listaItem);
+
+            listaNotaFiscal.addNotaFiscal(notaFiscal);
 
             textFieldCodigo.clear();
             textFieldQuantidade.clear();
             tableProdutos.getItems().clear();
             datePickerVenda.setValue(null);
-            alertInterface("SUCESSO", "Venda adicionada com sucesso", AlertType.INFORMATION);
+            alertInterface("SUCESSO", "Venda adicionada com sucesso.\nCódigo da nota fiscal: " + notaFiscal.getCodigo(), AlertType.INFORMATION);
             
         } catch (Exception e) {
             alertInterface("ERRO", e.getMessage(), AlertType.ERROR);
         }
-
     }
 
     @FXML
@@ -271,11 +272,32 @@ public class ControllerAddNotaFiscal {
     @FXML
     void alterarProduto(ActionEvent event) {
 
+        try {
+            int selectedIndex = tableProdutos.getSelectionModel().getSelectedIndex();
+            Item item = tableProdutos.getItems().get(selectedIndex);
+
+            textFieldCodigo.setText(item.getCodigo() + "");
+
+            if(item.getProduto() instanceof ProdutoUnidade) {
+                textFieldQuantidade.setText((int) item.getQuantidade() + "");
+            } else {
+                textFieldQuantidade.setText(item.getQuantidade() + "");
+            }
+
+            tableProdutos.getItems().remove(selectedIndex);
+        } catch (Exception e) {
+            alertInterface("ERRO", "Selecione um produto para alterar", AlertType.ERROR);
+        }
     }
 
     @FXML
     void removerProduto(ActionEvent event) {
-
+        try {
+            int selectedIndex = tableProdutos.getSelectionModel().getSelectedIndex();
+            tableProdutos.getItems().remove(selectedIndex);
+        } catch (Exception e) {
+            alertInterface("ERRO", "Selecione um produto para remover", AlertType.ERROR);
+        }
     }
 
     @FXML

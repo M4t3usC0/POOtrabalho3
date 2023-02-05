@@ -33,7 +33,7 @@ public class ListaNotaFiscal implements INotasFiscais {
                 return;
             }
         }
-        throw new RemoveNotaFiscalException("Não foi possível remover a nota fiscal.");
+        throw new RemoveNotaFiscalException("Não foi possível encontrar nota fiscal com o código: " + codigo + ".");
     }
 
     @Override
@@ -43,7 +43,7 @@ public class ListaNotaFiscal implements INotasFiscais {
                 return notaFiscal;
             }
         }
-        throw new NotaFiscalNotFoundException("Nota fiscal não encontrado.");
+        throw new NotaFiscalNotFoundException("Código de nota fiscal não existente.");
     }
 
     @Override
