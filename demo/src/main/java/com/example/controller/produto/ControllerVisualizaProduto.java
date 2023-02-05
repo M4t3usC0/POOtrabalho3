@@ -117,9 +117,17 @@ public class ControllerVisualizaProduto {
         mostrarEsconderTabela = !mostrarEsconderTabela;
 
         if(tableViewInfoCompleta.isVisible()) {
+
+            
+
             ObservableList<Produto> observableList = FXCollections.observableArrayList();
 
             try {
+
+                if(listaProdutos.isEmpty()) {
+                    throw new Exception("Não há produtos cadastrados");
+                }
+        
                 String[] dadosProduto = listaProdutos.toString().split("\n");
 
                 for(String dados : dadosProduto) {

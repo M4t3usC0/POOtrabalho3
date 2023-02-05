@@ -5,6 +5,9 @@ import com.example.exceptions.produto.QuantidadeNotSupportedException;
 public class Item {
 
     private Produto produto;
+    private int codigo;
+    private String nome;
+    private double preco;
     private double quantidade;
 
     public Item(Produto produto, double quantidade) {
@@ -26,16 +29,27 @@ public class Item {
         }
 
         this.produto = produto;
+        this.nome = produto.getNome();
+        this.preco = produto.getPreco();
+        this.codigo = produto.getCodigo();
         this.quantidade = quantidade;
     }
 
+    public String getNome() { return nome; }
+
     public Produto getProduto() { return produto; }
 
-    public double getPreco() { return produto.getPreco(); }
+    public double getPreco() { return preco; }
 
     public double getQuantidade() { return quantidade; }
 
-    public int getCodigo() { return produto.getCodigo(); }
+    public int getCodigo() { return codigo; }
+
+    public void setCodigo(int codigo) { this.codigo = codigo; }
+
+    public void setNome(String nome) { this.nome = nome; }
+
+    public void setPreco(double preco) { this.preco = preco; }
 
     public void setProduto(Produto produto) { this.produto = produto; }
 

@@ -27,6 +27,10 @@ public class ListaProdutos implements IProdutos {
         this.produtos = new ArrayList<Produto>();
     }
 
+    public ListaProdutos(ArrayList<Produto> produtos) {
+        this.produtos = produtos;
+    }
+
 
     @Override
     public void addProduto(Produto p) throws Exception {
@@ -155,8 +159,13 @@ public class ListaProdutos implements IProdutos {
     public void substituirProduto(Produto produtoASerSubstituido, Produto produtoSubstituto) {
         int index = produtos.indexOf(produtoASerSubstituido);
         produtos.set(index, produtoSubstituto);
-        
     }
+
+    public boolean isEmpty() {
+        return produtos.isEmpty();
+    }
+
+    public ArrayList<Produto> getArrayProdutos() { return produtos; }
 
     @Override
     public String toString() {

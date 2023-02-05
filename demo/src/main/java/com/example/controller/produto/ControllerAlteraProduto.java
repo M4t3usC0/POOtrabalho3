@@ -97,7 +97,7 @@ public class ControllerAlteraProduto {
 
         try {
 
-            if (codigo.trim().isEmpty()) {
+            if (codigo.trim().isEmpty() || codigo == null) {
                 throw new Exception("Campo código deve ser preenchido com um inteiro!");
             }
 

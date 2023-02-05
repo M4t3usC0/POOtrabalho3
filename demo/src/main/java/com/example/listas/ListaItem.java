@@ -50,4 +50,8 @@ public class ListaItem {
         return total;
     }
 
+    public ArrayList<Item> getArray() {
+        return listaItens;
+    }
+
 }
