@@ -16,21 +16,23 @@ public class NotaFiscal {
      * O atributo codigo, do tipo int, identifica o código da nota fiscal.
      */
     private int codigo;
+
     /**
      * O atributo data, do tipo Calendar, identifica a data da nota fiscal.
      */
     private Calendar data;
+
     /**
      * O atributo itens, do tipo ListaItem, identifica a lista de itens da nota fiscal.
      */
     private ListaItem itens;
+
     /**
      * O atributo codigoUnico, do tipo int, identifica o código único da nota fiscal.
      */
     private static int codigoUnico = 10000;
 
     public NotaFiscal(Calendar data, ListaItem itens) {
-
         if(data == null) {
             throw new IllegalArgumentException("Data não pode ser nula.");
         }
@@ -41,7 +43,8 @@ public class NotaFiscal {
         
         this.data = data;
         this.itens = itens;
-        this.codigo = codigoUnico++;
+        this.codigo = codigoUnico;
+        codigoUnico++;
     }
 
     /**

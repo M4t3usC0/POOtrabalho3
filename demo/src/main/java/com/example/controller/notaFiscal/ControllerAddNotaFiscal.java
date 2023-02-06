@@ -135,19 +135,25 @@ public class ControllerAddNotaFiscal {
     @FXML
     private DatePicker datePickerVenda;
 
-    
+    /**
+     * listaProdutos usado para receber a lista de produtos
+     */
     private ListaProdutos listaProdutos;
 
+    /**
+     * listaNotaFiscal usado para receber a lista de notas fiscais
+     */
     private ListaNotaFiscal listaNotaFiscal;
 
+    /**
+     * listaItem usado para receber a lista de itens
+     */
     private ListaItem listaItem;
 
-    private boolean informacoesUmaNotaFiscal = true;
-
-    private boolean informacoesTodasNotasFiscais = true;
-
-    private boolean informacoesDiaEspecifico = true;
-
+    /**
+     * Método usado para inicializar a coluna codigo, nome, preço, quantidade e descrição e a lista de produtos e notas fiscais
+     *
+     */
     @FXML
     void initialize() {
         tableColumnCodigo.setCellValueFactory(new PropertyValueFactory<Item, Integer>("codigo"));
@@ -156,15 +162,21 @@ public class ControllerAddNotaFiscal {
         tableColumnQuantidade.setCellValueFactory(new PropertyValueFactory<Item, Double>("quantidade"));
         tableColumnDescricao.setCellValueFactory(new PropertyValueFactory<Item, String>("descricao"));
 
-
         listaProdutos = ControllerMenuPrincipal.getListaProdutos();
         listaNotaFiscal = ControllerMenuPrincipal.getListaNotaFiscal();
 
-        listaItem = new ListaItem();
     }
 
+    /**
+     * Método usado para adicionar um produto na nota fiscal, usando o código e a quantidade como parâmetros
+     *
+     * @param event evento de clicar no botao
+     */
     @FXML
     void adicionarProduto(ActionEvent event) {
+
+       
+
         String codigo = textFieldCodigo.getText();
         String quantidade = textFieldQuantidade.getText();
 
@@ -199,6 +211,10 @@ public class ControllerAddNotaFiscal {
 
             if(codigoInt <= 0) {
                 throw new Exception("O campo código deve ser maior que zero");
+            }
+
+            if(tableProdutos.getItems().size() == 0) {
+                listaItem = new ListaItem();
             }
 
             Produto produto = listaProdutos.getProduto(codigoInt);
@@ -261,6 +277,11 @@ public class ControllerAddNotaFiscal {
 
     }
 
+    /**
+     * Método usado para adicionar uma nota fiscal, usando como parametros a lista de produtos
+     *
+     * @param event evento de clicar no botao
+     */
     @FXML
     void adicionarVenda(ActionEvent event) {
         ObservableList<Item> observableList = tableProdutos.getItems();
@@ -304,13 +325,20 @@ public class ControllerAddNotaFiscal {
         }
     }
 
+    /**
+    * Método usado para limpar os campos de texto
+    * @param event evento de clicar no botão
+    */
     @FXML
     void limparCampos(ActionEvent event) {
         textFieldCodigo.clear();
         textFieldQuantidade.clear();
     }
 
-    
+     /**
+    * Método usado para voltar para a tela principal
+    * @param event evento de clicar no botão
+    */
     @FXML
     void voltarParaPrincipal(MouseEvent event) {
         try {
@@ -320,11 +348,16 @@ public class ControllerAddNotaFiscal {
             rootPane.getChildren().clear();
             rootPane.getChildren().add(cmdPane);
         } catch (Exception e) {
-            System.out.println(e);
             alertInterface("ERRO", "Não foi possível voltar para o menu principal", AlertType.ERROR);
         }
     }
 
+    /**
+    * Método usado para mostrar uma mensagem de alerta
+    * @param titulo título da mensagem
+    * @param mensagem mensagem a ser mostrada
+    * @param tipo tipo de alerta
+    */
     void alertInterface(String titulo, String mensagem, AlertType tipo) {
         Alert alert = new Alert(tipo);
         alert.setTitle(titulo);
@@ -333,6 +366,10 @@ public class ControllerAddNotaFiscal {
         alert.showAndWait();
     }
 
+    /**
+    * Método usado para alterar um produto da lista
+    * @param event evento de clicar no botão
+    */
     @FXML
     void alterarProduto(ActionEvent event) {
 
@@ -354,6 +391,10 @@ public class ControllerAddNotaFiscal {
         }
     }
 
+    /**
+    * Método usado para remover um produto da lista
+    * @param event evento de clicar no botão
+    */
     @FXML
     void removerProduto(ActionEvent event) {
         try {
@@ -364,58 +405,110 @@ public class ControllerAddNotaFiscal {
         }
     }
 
+    /**
+     * Efeito de hover ao tirar o mouse no botão de alterar
+     * @param event evento de hover ao passar o mouse no botão
+     */
     @FXML
     void notHoverBtnAlterar(MouseEvent event) {
+        btnAlterarProduto.setStyle("-fx-background-color: #807d0a;-fx-cursor: hand; -fx-background-radius: 50;");
     }
 
+    /**
+     * Efeito de hover ao passar o mouse no botão de alterar
+     * @param event evento de hover ao passar o mouse no botão
+     */
     @FXML
     void hoverBtnAlterar(MouseEvent event) {
+        btnAlterarProduto.setStyle("-fx-background-color: #676508;-fx-cursor: hand; -fx-background-radius: 50;");
     }
 
+    /**
+     * Efeito de hover ao tirar o mouse no botão de remover
+     * @param event evento de hover ao passar o mouse no botão
+     */
     @FXML
     void notHoverBtnRemover(MouseEvent event) {
+        btnRemover.setStyle("-fx-background-color: #7d2727;-fx-cursor: hand; -fx-background-radius: 50;");
     }
 
+    /**
+     * Efeito de hover ao passar o mouse no botão de remover
+     * @param event evento de hover ao passar o mouse no botão
+     */
     @FXML
     void hoverBtnRemover(MouseEvent event) {
+        btnRemover.setStyle("-fx-background-color: #682121;-fx-cursor: hand; -fx-background-radius: 50;");
     }
 
+    /**
+     * Efeito de hover ao tirar o mouse no botão de adicionar
+     * @param event evento de hover ao tirar o mouse no botão
+     */
     @FXML
     void notHoverBtnAdicionar(MouseEvent event) {
         btnAdicionar.setStyle("-fx-background-color: #2b6b2a;-fx-cursor: hand; -fx-background-radius: 50;");
     }
 
+    /**
+     * Efeito de hover ao tirar o mouse no botão de limpar
+     * @param event evento de hover ao tirar o mouse no botão
+     */
     @FXML
     void notHoverBtnLimpar(MouseEvent event) {
         btnLimpar.setStyle("-fx-background-color: #747474;-fx-cursor: hand; -fx-background-radius: 50;");
     }
 
+    /**
+     * Efeito de hover ao tirar o mouse no botão de concluir
+     * @param event evento de hover ao tirar o mouse no botão
+     */
     @FXML
     void notHoverBtnConcluir(MouseEvent event) {
         btnConcluir.setStyle("-fx-background-color: #2b6b2a;-fx-cursor: hand; -fx-background-radius: 50;");
     }
 
+    /**
+     * Efeito de hover ao tirar o mouse no botão de concluir
+     * @param event evento de hover ao tirar o mouse no botão
+     */
     @FXML
     void notHoverBtnVoltar(MouseEvent event) {
         btnVoltar.setImage(new Image("com\\example\\images\\pngVoltar.png"));
         btnVoltar.setStyle("-fx-cursor: hand;");
     }
 
+    /**
+     * Efeito de hover ao passar o mouse no botão de adicionar
+     * @param event evento de hover ao passar o mouse no botão
+     */
     @FXML
     void hoverBtnAdicionar(MouseEvent event) {
         btnAdicionar.setStyle("-fx-background-color: #245823;-fx-cursor: hand; -fx-background-radius: 50;");
     }
 
+    /**
+     * Efeito de hover ao passar o mouse no botão de concluir
+     * @param event evento de hover ao passar o mouse no botão
+     */
     @FXML
     void hoverBtnConcluir(MouseEvent event) {
         btnConcluir.setStyle("-fx-background-color: #245823;-fx-cursor: hand; -fx-background-radius: 50;");
     }
 
+    /**
+     * Efeito de hover ao tirar o mouse do botão de limpar
+     * @param event efeito de hover ao tirar o mouse do botão
+     */
     @FXML
     void hoverBtnLimpar(MouseEvent event) {
         btnLimpar.setStyle("-fx-background-color: #686868;-fx-cursor: hand; -fx-background-radius: 50;");
     }
 
+    /**
+     * Efeito de hover ao passar o mouse no botão de voltar
+     * @param event evento hover ao passar o mouse no botão de voltar
+     */
     @FXML
     void hoverBtnVoltar(MouseEvent event) {
         btnVoltar.setImage(new Image("com\\example\\images\\pngVoltarHover.png"));

@@ -8,7 +8,7 @@ package com.example.exceptions.produto;
 public class ProdutoNotFoundException extends IllegalArgumentException {
 
     /**
-     * Construtor da classe RemoveProdutoException
+     * Construtor da classe ProdutoNotFoundException
      * @param message Mensagem de erro
      */
     public ProdutoNotFoundException(String message) {

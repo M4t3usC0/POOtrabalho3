@@ -9,7 +9,7 @@ package com.example.exceptions.produto;
 public class PrecoNotSupportedException extends IllegalArgumentException {
 
     /**
-     * Construtor da classe AddProdutoException
+     * Construtor da classe PrecoNotSupportedException
      * @param message Mensagem de erro
      */
     public PrecoNotSupportedException(String message) {

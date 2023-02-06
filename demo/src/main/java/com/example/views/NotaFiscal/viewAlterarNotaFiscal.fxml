@@ -54,7 +54,7 @@
                   <TableColumn fx:id="tableColumnQuantidade" prefWidth="283.199951171875" text="Quantidade" />
                </columns>
             </TableView>
-            <Button fx:id="btnAdicionarProduto" layoutX="644.0" layoutY="58.0" mnemonicParsing="false" onAction="#adicionarProduto" onMouseExited="#notHoverBtnProcurar" onMouseMoved="#hoverBtnProcurar" prefHeight="46.0" prefWidth="137.0" style="-fx-background-radius: 50; -fx-background-color: #2b6b2a;" text="Adicionar" textFill="WHITE">
+            <Button fx:id="btnAdicionarProduto" layoutX="644.0" layoutY="58.0" mnemonicParsing="false" onAction="#adicionarProduto" onMouseExited="#notHoverBtnAdicionar" onMouseMoved="#hoverBtnAdicionar" prefHeight="46.0" prefWidth="137.0" style="-fx-background-radius: 50; -fx-background-color: #2b6b2a;" text="Adicionar" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>

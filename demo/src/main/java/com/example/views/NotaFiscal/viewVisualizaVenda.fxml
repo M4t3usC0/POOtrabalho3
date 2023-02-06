@@ -19,12 +19,12 @@
             <Font name="System Bold" size="36.0" />
          </font>
       </Label>
-      <Button fx:id="btnInformacaoTodosProdutos" layoutX="584.0" layoutY="87.0" mnemonicParsing="false" onAction="#informacaoDiaEspecifico" onMouseExited="#notHoverBtnInformacaoTodosProdutos" onMouseMoved="#hoverBtnInformacaoTodosProdutos" prefHeight="70.0" prefWidth="211.0" style="-fx-background-radius: 50; -fx-background-color: #2b6b2a;" text="Informações de um dia específico" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+      <Button fx:id="btnInformacaoDiaEspecifico" layoutX="584.0" layoutY="87.0" mnemonicParsing="false" onAction="#informacaoDiaEspecifico" onMouseExited="#notHoverBtnInformacaoDiaEspecifico" onMouseMoved="#hoverBtnInformacaoDiaEspecifico" prefHeight="70.0" prefWidth="211.0" style="-fx-background-radius: 50; -fx-background-color: #2b6b2a;" text="Informações de um dia específico" textAlignment="CENTER" textFill="WHITE" wrapText="true">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="btnInformacaoNotaFiscal" layoutX="98.0" layoutY="87.0" mnemonicParsing="false" onAction="#informacaoUmaNota" onMouseExited="#notHoverBtnInformacaoProduto" onMouseMoved="#hoverBtnInformacaoProduto" prefHeight="70.0" prefWidth="194.0" style="-fx-background-radius: 50; -fx-background-color: #2b6b2a;" text="Informações de uma Nota Fiscal" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+      <Button fx:id="btnInformacaoNotaFiscal" layoutX="98.0" layoutY="87.0" mnemonicParsing="false" onAction="#informacaoUmaNota" onMouseExited="#notHoverbtnInformacaoNotaFiscal" onMouseMoved="#hoverbtnInformacaoNotaFiscal" prefHeight="70.0" prefWidth="194.0" style="-fx-background-radius: 50; -fx-background-color: #2b6b2a;" text="Informações de uma Nota Fiscal" textAlignment="CENTER" textFill="WHITE" wrapText="true">
          <font>
             <Font size="18.0" />
          </font>
@@ -34,7 +34,7 @@
             <Image url="@../../images/pngVoltar.png" />
          </image>
       </ImageView>
-      <Button fx:id="btnInformacaoTodosProdutos1" layoutX="337.0" layoutY="87.0" mnemonicParsing="false" onAction="#informacaoTodasNotas" onMouseExited="#notHoverBtnInformacaoTodosProdutos" onMouseMoved="#hoverBtnInformacaoTodosProdutos" prefHeight="70.0" prefWidth="211.0" style="-fx-background-radius: 50; -fx-background-color: #2b6b2a;" text="Informações de todas as Notas Fiscais" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+      <Button fx:id="btnInformacaoTodasNotas" layoutX="337.0" layoutY="87.0" mnemonicParsing="false" onAction="#informacaoTodasNotas" onMouseExited="#notHoverBtnInformacaoTodasNotas" onMouseMoved="#hoverBtnInformacaoTodasNotas" prefHeight="70.0" prefWidth="211.0" style="-fx-background-radius: 50; -fx-background-color: #2b6b2a;" text="Informações de todas as Notas Fiscais" textAlignment="CENTER" textFill="WHITE" wrapText="true">
          <font>
             <Font size="18.0" />
          </font>
@@ -51,7 +51,7 @@
       </Pane>
       <Pane fx:id="paneDiaEspecifico" layoutY="186.0" prefHeight="414.0" prefWidth="900.0" visible="false">
          <children>
-            <Button fx:id="btnProcurarNotaFiscalDia" layoutX="237.0" layoutY="51.0" mnemonicParsing="false" onAction="#procurarNotaFiscalDia" onMouseExited="#notHoverBtnProcurarNotaFiscalUnica" onMouseMoved="#hoverBtnProcurarNotaFiscalUnica" prefHeight="46.0" prefWidth="134.0" style="-fx-background-radius: 50; -fx-background-color: #2b6b2a;" text="Procurar" textFill="WHITE">
+            <Button fx:id="btnProcurarNotaFiscalDia" layoutX="237.0" layoutY="51.0" mnemonicParsing="false" onAction="#procurarNotaFiscalDia" onMouseExited="#notHoverBtnProcurarNotaFiscalDia" onMouseMoved="#hoverBtnProcurarNotaFiscalDia" prefHeight="46.0" prefWidth="134.0" style="-fx-background-radius: 50; -fx-background-color: #2b6b2a;" text="Procurar" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
@@ -90,7 +90,7 @@
             </Label>
          </children>
       </Pane>
-      <Pane fx:id="paneInformacoesUmaNota" layoutX="19.0" layoutY="148.0" pickOnBounds="false" prefHeight="442.0" prefWidth="830.0">
+      <Pane fx:id="paneInformacoesUmaNota" layoutX="19.0" layoutY="148.0" pickOnBounds="false" prefHeight="442.0" prefWidth="830.0" visible="false">
          <children>
             <TableView fx:id="tableProdutos" disable="true" layoutX="21.0" layoutY="109.0" prefHeight="254.0" prefWidth="789.0">
                <columns>
@@ -101,12 +101,12 @@
                   <TableColumn fx:id="tableColumnDescricao" prefWidth="303.199951171875" text="Descrição" />
                </columns>
             </TableView>
-            <TextField fx:id="textFieldCodigo" layoutX="21.0" layoutY="51.0" prefHeight="40.0" prefWidth="265.0" promptText="Digite o código do produto" style="-fx-background-radius: 20; -fx-background-color: white;">
+            <TextField fx:id="textFieldCodigo" layoutX="21.0" layoutY="51.0" prefHeight="40.0" prefWidth="265.0" promptText="Digite o código da Nota Fiscal" style="-fx-background-radius: 20; -fx-background-color: white;">
                <font>
                   <Font size="18.0" />
                </font>
             </TextField>
-            <Label layoutX="21.0" layoutY="26.0" text="Código Produto" textFill="WHITE">
+            <Label layoutX="21.0" layoutY="26.0" text="Código Nota Fiscal" textFill="WHITE">
                <font>
                   <Font size="16.0" />
                </font>

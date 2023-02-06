@@ -198,9 +198,6 @@ public class ControllerVisualizaProduto {
         mostrarEsconderTabela = !mostrarEsconderTabela;
 
         if(tableViewInfoCompleta.isVisible()) {
-
-            
-
             ObservableList<Produto> observableList = FXCollections.observableArrayList();
 
             try {

@@ -8,7 +8,7 @@ package com.example.exceptions.produto;
 public class QuantidadeNotSupportedException extends IllegalArgumentException {
 
     /**
-     * Construtor da classe RemoveProdutoException
+     * Construtor da classe QuantidadeNotSupportedException
      * @param message Mensagem de erro
      */
     public QuantidadeNotSupportedException(String message) {

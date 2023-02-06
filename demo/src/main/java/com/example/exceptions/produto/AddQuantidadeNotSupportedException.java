@@ -9,7 +9,7 @@ package com.example.exceptions.produto;
 public class AddQuantidadeNotSupportedException extends IllegalArgumentException {
 
     /**
-     * Construtor da classe AddProdutoException
+     * Construtor da classe AddQuantidadeNotSupportedException
      * @param message Mensagem de erro
      */
     public AddQuantidadeNotSupportedException(String message) {

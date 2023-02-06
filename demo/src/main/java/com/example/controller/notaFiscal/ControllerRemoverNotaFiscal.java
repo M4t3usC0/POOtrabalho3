@@ -19,67 +19,89 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
+/**
+ * Classe responsável por controlar a tela de remmover de nota fiscal
+* @author Ricardo, Tales, Mateus, Mauricio
+* @since jan 2023
+ */
 public class ControllerRemoverNotaFiscal {
 
+    /**
+     * btnLimpar usado para limpar os campos
+     */
     @FXML
     private Button btnLimpar;
 
+    /**
+     * btnRemover usado para remover a nota fiscal
+     */
     @FXML
     private Button btnRemover;
 
+    /**
+     * btnVoltar usado para voltar para o menu principal
+     */
     @FXML
     private ImageView btnVoltar;
 
+    /**
+     * rootPane usado para controlar a tela
+     */
     @FXML
     private AnchorPane rootPane;
 
+    /**
+     * textFieldCodigo usado para receber o código da nota fiscal
+     */
     @FXML
     private TextField textFieldCodigo;
 
+    /**
+     * listaProdutos usado para receber a lista de notas fiscais
+     */
     private ListaNotaFiscal listaNotaFiscal;
 
+    /**
+     * Método usado para inicializar a lista de notas fiscais
+     */
     @FXML
     void initialize() {
         listaNotaFiscal = ControllerMenuPrincipal.getListaNotaFiscal();
     }
 
-    @FXML
-    void hoverBtnLimpar(MouseEvent event) {
-
-    }
-
-    @FXML
-    void hoverBtnRemover(MouseEvent event) {
-
-    }
-
+    /**
+     * Efeito de hover ao passar o mouse no botão de voltar
+     * @param event evento hover ao passar o mouse no botão de voltar
+     */
     @FXML
     void hoverBtnVoltar(MouseEvent event) {
         btnVoltar.setImage(new Image("com\\example\\images\\pngVoltarHover.png"));
         btnVoltar.setStyle("-fx-cursor: hand;");
     }
 
+    /**
+    * Método usado para limpar os campos de texto
+    * @param event evento de clicar no botão
+    */
     @FXML
     void limparCampos(ActionEvent event) {
         textFieldCodigo.clear();
     }
 
-    @FXML
-    void notHoverBtnLimpar(MouseEvent event) {
-
-    }
-
-    @FXML
-    void notHoverBtnRemover(MouseEvent event) {
-
-    }
-
+    /**
+     * Efeito de hover ao tirar o mouse no botão de voltar
+     * @param event evento de hover ao passar o mouse no botão
+     */
     @FXML
     void notHoverBtnVoltar(MouseEvent event) {
         btnVoltar.setImage(new Image("com\\example\\images\\pngVoltar.png"));
         btnVoltar.setStyle("-fx-cursor: hand;");
     }
 
+    /**
+     * Método usado para remover a nota fiscal usando o codigo como parâmetro
+     * @param event evento de clicar no botão
+     */
     @FXML
     void removerNotaFiscal(ActionEvent event) {
 
@@ -120,6 +142,10 @@ public class ControllerRemoverNotaFiscal {
         }
     }
 
+    /**
+    * Método usado para voltar para a tela principal
+    * @param event evento de clicar no botão
+    */ 
     @FXML
     void voltarParaPrincipal(MouseEvent event) {
         try {
@@ -134,6 +160,12 @@ public class ControllerRemoverNotaFiscal {
         }
     }
 
+    /**
+    * Método usado para mostrar uma mensagem de alerta
+    * @param titulo título da mensagem
+    * @param mensagem mensagem a ser mostrada
+    * @param tipo tipo de alerta
+    */
     void alertInterface(String titulo, String mensagem, AlertType tipo) {
         Alert alert = new Alert(tipo);
         alert.setTitle(titulo);
@@ -142,6 +174,10 @@ public class ControllerRemoverNotaFiscal {
         alert.showAndWait();
     }
 
+    /**
+     * Método usado para mostrar uma mensagem de confirmação
+     * @return retorna o resultado da confirmação
+     */
     Optional<ButtonType> alertInterfaceConfirmacao() {
         Alert alert = new Alert(AlertType.CONFIRMATION);
         alert.setTitle("Confirmação");
@@ -150,5 +186,40 @@ public class ControllerRemoverNotaFiscal {
         return alert.showAndWait();
     }
 
-}
+    /**
+     * Efeito de hover ao passar o mouse do botão de limpar
+     * @param event efeito de hover ao passar o mouse do botão
+     */
+    @FXML
+    void hoverBtnLimpar(MouseEvent event) {
+        btnLimpar.setStyle("-fx-background-color: #686868;-fx-cursor: hand; -fx-background-radius: 50;");
+    }
 
+    /**
+     * Efeito de hover ao passar o mouse do botão de remover
+     * @param event efeito de hover ao tirar o mouse do botão
+     */
+    @FXML
+    void hoverBtnRemover(MouseEvent event) {
+        btnRemover.setStyle("-fx-background-color: #682121;-fx-cursor: hand; -fx-background-radius: 50;");
+    }
+
+    /**
+     * Efeito de hover ao tirar o mouse do botão de limpar
+     * @param event efeito de hover ao tirar o mouse do botão
+     */
+    @FXML
+    void notHoverBtnLimpar(MouseEvent event) {
+        btnLimpar.setStyle("-fx-background-color: #747474;-fx-cursor: hand; -fx-background-radius: 50;");
+    }
+
+    /**
+     * Efeito de hover ao tirar o mouse do botão de limpar
+     * @param event efeito de hover ao tirar o mouse do botão
+     */
+    @FXML
+    void notHoverBtnRemover(MouseEvent event) {
+        btnRemover.setStyle("-fx-background-color: #7d2727;-fx-cursor: hand; -fx-background-radius: 50;");
+    }
+
+}

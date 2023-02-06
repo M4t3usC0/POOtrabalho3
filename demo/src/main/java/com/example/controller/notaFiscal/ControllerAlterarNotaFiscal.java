@@ -28,73 +28,142 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
+/**
+ * Classe responsável por controlar a tela de alterar nota fiscal
+* @author Ricardo, Tales, Mateus, Mauricio
+* @since jan 2023
+ */
 public class ControllerAlterarNotaFiscal {
 
     @FXML
     private Button btnAlterarProduto;
 
+    /**
+     * btnLimpar usado para limpar os campos
+     */
     @FXML
     private Button btnLimpar;
 
+    /**
+     * btnProcurar usado para procurar uma nota fiscal
+     */
     @FXML
     private Button btnProcurar;
 
+    /**
+     * btnRemover usado para remover um produto da nota fiscal
+     */
     @FXML
     private Button btnRemover;
 
+    /**
+     * btnSalvar usado para salvar a nota fiscal
+     */
     @FXML
     private Button btnSalvar;
 
+    /**
+     * btnAdicionarProduto usado para adicionar um produto na nota fiscal
+     */
     @FXML
     private Button btnAdicionarProduto;
 
+    /**
+     * datePickerVenda usado para selecionar a data da venda
+     */
     @FXML
     private DatePicker datePickerVenda;
 
+    /**
+     * btnVoltar usado para voltar para a tela anterior
+     */
     @FXML
     private ImageView btnVoltar;
 
+    /**
+     * rootPane usado para carregar a tela
+     */
     @FXML
     private AnchorPane rootPane;
 
+    /**
+     * salvarAltera usado para salvar a alteração da nota fiscal
+     */
     @FXML
     private Pane salvarAltera;
 
+    /**
+     * textFieldCodigo usado para receber o código da nota fiscal
+     */
     @FXML
     private TextField textFieldCodigo;
 
+    /**
+     * textFieldCodigoProduto usado para receber o código do produto
+     */
     @FXML
     private TextField textFieldCodigoProduto;
 
+    /**
+     * textFieldQuantidade usado para receber a quantidade do produto
+     */
     @FXML
     private TextField textFieldQuantidade;
 
+    /**
+     * tableProdutos usado para mostrar os produtos da nota fiscal
+     */
     @FXML
     private TableView<Item> tableProdutos;
 
+    /**
+     * tableColumnCodigo usado para mostrar o código do produto
+     */
     @FXML
     private TableColumn<Item, Integer> tableColumnCodigo;
 
+    /**
+     * tableColumnNome usado para mostrar o nome do produto
+     */
     @FXML
     private TableColumn<Item, String> tableColumnNome;
 
+    /**
+     * tableColumnPreco usado para mostrar o preço do produto
+     */
     @FXML
     private TableColumn<Item, Double> tableColumnPreco;
 
+    /**
+     * tableColumnQuantidade usado para mostrar a quantidade do produto
+     */
     @FXML
     private TableColumn<Item, Integer> tableColumnQuantidade;
 
+    /**
+     * listaProdutos usado para receber a lista de notas fiscais
+     */
     private ListaNotaFiscal listaNotaFiscal;
 
+    /**
+     * listaProdutos usado para receber a lista de produtos
+     */
     private ListaProdutos listaProdutos;
 
+    /**
+     * listaItemAntes usado para receber a lista de itens antes da alteração
+     */
     private ListaItem listaItemAntes;
 
+    /**
+     * initialize usado para inicializar a coluna codigo, nome, preço e quantidade e a lista de notas fiscais e produtos
+     */
     @FXML
     void initialize() {
         tableColumnCodigo.setCellValueFactory(new PropertyValueFactory<Item, Integer>("codigo"));
@@ -108,6 +177,10 @@ public class ControllerAlterarNotaFiscal {
         listaItemAntes = new ListaItem();
     }
 
+    /**
+    * Método usado para alterar um produto da nota fiscal
+    * @param event evento de clicar no botão
+    */
     @FXML
     void alterarProduto(ActionEvent event) {
         try {
@@ -128,6 +201,10 @@ public class ControllerAlterarNotaFiscal {
         }
     }
 
+    /**
+    * Método usado para adicionar um produto na nota fiscal
+    * @param event evento de clicar no botão
+    */
     @FXML
     void adicionarProduto(ActionEvent event) {
         String codigoNF = textFieldCodigo.getText();
@@ -247,6 +324,10 @@ public class ControllerAlterarNotaFiscal {
         }
     }
 
+    /**
+    * Método para procurar uma venda usando o codigo como parâmetro
+    * @param event Evento de clique no botão
+    */
     @FXML
     void procurarVenda(ActionEvent event) {
         String codigo = textFieldCodigo.getText();
@@ -301,6 +382,10 @@ public class ControllerAlterarNotaFiscal {
         }
     }
 
+    /**
+    * Método para remover um produto da nota fiscal
+    * @param event Evento de clique no botão
+    */
     @FXML
     void removerProduto(ActionEvent event) {
         try {
@@ -311,6 +396,10 @@ public class ControllerAlterarNotaFiscal {
         }
     }
 
+    /**
+    * Método para salvar as alterações feitas na nota fiscal
+    * @param event Evento de clique no botão
+    */
     @FXML
     void salvarAlteracaoProduto(ActionEvent event) {
 
@@ -380,6 +469,10 @@ public class ControllerAlterarNotaFiscal {
         }
     }
 
+    /**
+    * Método usado para voltar para a tela principal
+    * @param event evento de clicar no botão
+    */
     @FXML
     void voltarParaPrincipal(MouseEvent event) {
         try {
@@ -393,6 +486,12 @@ public class ControllerAlterarNotaFiscal {
         }
     }
 
+    /**
+    * Método usado para mostrar uma mensagem de alerta
+    * @param titulo título da mensagem
+    * @param mensagem mensagem a ser mostrada
+    * @param tipo tipo de alerta
+    */
     void alertInterface(String titulo, String mensagem, AlertType tipo) {
         Alert alert = new Alert(tipo);
         alert.setTitle(titulo);
@@ -402,63 +501,101 @@ public class ControllerAlterarNotaFiscal {
     }
 
     @FXML
-    void hoverBtnAlterar(MouseEvent event) {
-
+    void notHoverBtnAdicionar(MouseEvent event) {
+        btnAdicionarProduto.setStyle("-fx-background-color: #2b6b2a;-fx-cursor: hand; -fx-background-radius: 50;");
     }
 
     @FXML
-    void hoverBtnLimpar(MouseEvent event) {
-
+    void hoverBtnAdicionar(MouseEvent event) {
+        btnAdicionarProduto.setStyle("-fx-background-color: #245823;-fx-cursor: hand; -fx-background-radius: 50;");
     }
 
+    @FXML
+    void hoverBtnAlterar(MouseEvent event) {
+        btnAlterarProduto.setStyle("-fx-background-color: #676508;-fx-cursor: hand; -fx-background-radius: 50;");
+    }
+
+    /**
+     * Efeito de hover ao passar o mouse do botão de procurar
+     * @param event efeito de hover ao passar o mouse do botão
+     */
     @FXML
     void hoverBtnProcurar(MouseEvent event) {
-
+        btnProcurar.setStyle("-fx-background-color: #676508;-fx-cursor: hand; -fx-background-radius: 50;");
     }
 
+    /**
+     * Efeito de hover ao passar o mouse do botão de remover
+     * @param event efeito de hover ao passar o mouse do botão
+     */
     @FXML
     void hoverBtnRemover(MouseEvent event) {
-
+        btnRemover.setStyle("-fx-background-color: #682121;-fx-cursor: hand; -fx-background-radius: 50;");
     }
 
+    /**
+     * Efeito de hover ao passar o mouse do botão de salvar
+     * @param event efeito de hover ao passar o mouse do botão
+     */
     @FXML
     void hoverBtnSalvar(MouseEvent event) {
-
+        btnSalvar.setStyle("-fx-background-color: #245823;-fx-cursor: hand; -fx-background-radius: 50;");
     }
 
+    /**
+     * Efeito de hover ao passar o mouse do botão de voltar
+     * @param event efeito de hover ao passar o mouse do botão
+     */
     @FXML
     void hoverBtnVoltar(MouseEvent event) {
-
+        btnVoltar.setImage(new Image("com\\example\\images\\pngVoltarHover.png"));
+        btnVoltar.setStyle("-fx-cursor: hand;");
     }
 
+    /**
+     * Efeito de hover ao tirar o mouse do botão de alterar
+     * @param event efeito de hover ao tirar o mouse do botão
+     */
     @FXML
     void notHoverBtnAlterar(MouseEvent event) {
-
+        btnAlterarProduto.setStyle("-fx-background-color: #807d0a;-fx-cursor: hand; -fx-background-radius: 50;");
     }
 
-    @FXML
-    void notHoverBtnLimpar(MouseEvent event) {
-
-    }
-
+    /**
+     * Efeito de hover ao tirar o mouse do botão de procurar
+     * @param event efeito de hover ao tirar o mouse do botão
+     */
     @FXML
     void notHoverBtnProcurar(MouseEvent event) {
-
+        btnProcurar.setStyle("-fx-background-color: #807d0a;-fx-cursor: hand; -fx-background-radius: 50;");
     }
 
+    /**
+     * Efeito de hover ao tirar o mouse do botão de remover
+     * @param event efeito de hover ao tirar o mouse do botão
+     */
     @FXML
     void notHoverBtnRemover(MouseEvent event) {
-
+        btnRemover.setStyle("-fx-background-color: #7d2727;-fx-cursor: hand; -fx-background-radius: 50;");
     }
 
+    /**
+     * Efeito de hover ao tirar o mouse do botão de salvar
+     * @param event efeito de hover ao tirar o mouse do botão
+     */
     @FXML
     void notHoverBtnSalvar(MouseEvent event) {
-
+        btnSalvar.setStyle("-fx-background-color: #2b6b2a;-fx-cursor: hand; -fx-background-radius: 50;");
     }
 
+    /**
+     * Efeito de hover ao tirar o mouse no botão de voltar
+     * @param event evento de hover ao passar o mouse no botão
+     */
     @FXML
     void notHoverBtnVoltar(MouseEvent event) {
-
+        btnVoltar.setImage(new Image("com\\example\\images\\pngVoltar.png"));
+        btnVoltar.setStyle("-fx-cursor: hand;");
     }
 
 }
