@@ -81,9 +81,10 @@
       <TableView fx:id="tableProdutos" layoutX="54.0" layoutY="251.0" prefHeight="254.0" prefWidth="789.0">
         <columns>
           <TableColumn fx:id="tableColumnCodigo" prefWidth="129.5999984741211" text="Código" />
-          <TableColumn fx:id="tableColumnNome" prefWidth="232.0" text="Nome Produto" />
-            <TableColumn fx:id="tableColumnPreco" prefWidth="140.80007934570312" text="Preço" />
-            <TableColumn fx:id="tableColumnQuantidade" prefWidth="283.199951171875" text="Quantidade" />
+          <TableColumn fx:id="tableColumnNome" prefWidth="185.5999755859375" text="Nome Produto" />
+            <TableColumn fx:id="tableColumnPreco" prefWidth="140.0" text="Preço" />
+            <TableColumn fx:id="tableColumnQuantidade" prefWidth="161.60000610351562" text="Quantidade" />
+            <TableColumn fx:id="tableColumnDescricao" prefWidth="170.39990234375" text="Descrição" />
         </columns>
       </TableView>
       <DatePicker fx:id="datePickerVenda" layoutX="710.0" layoutY="125.0" prefHeight="40.0" prefWidth="134.0" />

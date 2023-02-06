@@ -270,6 +270,10 @@ public class ControllerAddProduto {
         btnLimpar.setStyle("-fx-background-color: #747474;-fx-cursor: hand; -fx-background-radius: 50;");
     }
 
+    /**
+     * Efeito de hover ao tirar o mouse no botão de voltar
+     * @param event evento de hover ao passar o mouse no botão
+     */
     @FXML
     void notHoverBtnVoltar(MouseEvent event) {
         btnVoltar.setImage(new Image("com\\example\\images\\pngVoltar.png"));

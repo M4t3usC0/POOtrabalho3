@@ -8,7 +8,6 @@ import java.util.Date;
 import com.example.baseclasse.Item;
 import com.example.baseclasse.NotaFiscal;
 import com.example.baseclasse.Produto;
-import com.example.baseclasse.ProdutoFracionado;
 import com.example.baseclasse.ProdutoUnidade;
 import com.example.controller.ControllerMenuPrincipal;
 import com.example.listas.ListaItem;
@@ -33,58 +32,121 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
+/**
+ * Classe responsável por controlar a tela de adicionar nota fiscal
+* @author Ricardo, Tales, Mateus, Mauricio
+* @since jan 2023
+ */
 public class ControllerAddNotaFiscal {
 
+    /**
+     * btnAdicionar usado para adicionar um produto
+     */
     @FXML
     private Button btnAdicionar;
 
+    /**
+     * btnConcluir usado para concluir a nota fiscal
+     */
     @FXML
     private Button btnConcluir;
 
+    /**
+     * btnLimpar usado para limpar os campos
+     */
     @FXML
     private Button btnLimpar;
 
+    /**
+     * btnAlterarProduto usado para alterar um produto
+     */
     @FXML
     private Button btnAlterarProduto;
 
+    /**
+     * btnRemover usado para remover um produto
+     */
     @FXML
     private Button btnRemover;
 
+    /**
+     * btnVoltar usado para voltar para a tela anterior
+     */
     @FXML
     private ImageView btnVoltar;
 
+    /**
+     * tableProdutos usado para mostrar os produtos
+     */
     @FXML
     private TableView<Item> tableProdutos;
 
+    /**
+     * tableColumnCodigo usado para mostrar o código do produto
+     */
     @FXML
     private TableColumn<Item, Integer> tableColumnCodigo;
 
+    /**
+     * tableColumnNome usado para mostrar o nome do produto
+     */
     @FXML
     private TableColumn<Item, String> tableColumnNome;
 
+    /**
+     * tableColumnPreco usado para mostrar o preço do produto
+     */
     @FXML
     private TableColumn<Item, Double> tableColumnPreco;
 
+    /**
+     * tableColumnQuantidade usado para mostrar a quantidade do produto
+     */
     @FXML
     private TableColumn<Item, Double> tableColumnQuantidade;
 
+    /**
+     * tableColumnDescricao usado para mostrar a descrição do produto
+     */
+    @FXML
+    private TableColumn<Item, String> tableColumnDescricao;
+
+    /**
+     * rootPane usado para mostrar a tela
+     */
     @FXML
     private AnchorPane rootPane;
 
+    /**
+     * textFieldCodigo usado para receber o código do produto
+     */
     @FXML
     private TextField textFieldCodigo;
 
+    /**
+     * textFieldQuantidade usado para receber a quantidade do produto
+     */
     @FXML
     private TextField textFieldQuantidade;
 
+    /**
+     * datePickerVenda usado para receber a data da venda
+     */
     @FXML
     private DatePicker datePickerVenda;
 
+    
     private ListaProdutos listaProdutos;
 
     private ListaNotaFiscal listaNotaFiscal;
 
     private ListaItem listaItem;
+
+    private boolean informacoesUmaNotaFiscal = true;
+
+    private boolean informacoesTodasNotasFiscais = true;
+
+    private boolean informacoesDiaEspecifico = true;
 
     @FXML
     void initialize() {
@@ -92,6 +154,8 @@ public class ControllerAddNotaFiscal {
         tableColumnNome.setCellValueFactory(new PropertyValueFactory<Item, String>("nome"));
         tableColumnPreco.setCellValueFactory(new PropertyValueFactory<Item, Double>("preco"));
         tableColumnQuantidade.setCellValueFactory(new PropertyValueFactory<Item, Double>("quantidade"));
+        tableColumnDescricao.setCellValueFactory(new PropertyValueFactory<Item, String>("descricao"));
+
 
         listaProdutos = ControllerMenuPrincipal.getListaProdutos();
         listaNotaFiscal = ControllerMenuPrincipal.getListaNotaFiscal();

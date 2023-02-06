@@ -29,6 +29,10 @@ public class Item {
     * O atributo quantidade, do tipo double, identifica a quantidade do item.
     */
     private double quantidade;
+    /**
+    * O atributo descricao, do tipo String, identifica a descricao do item.
+    */
+    private String descricao;
 
     /**
     * Construtor default da classe Item<br>
@@ -60,6 +64,7 @@ public class Item {
         this.preco = produto.getPreco();
         this.codigo = produto.getCodigo();
         this.quantidade = quantidade;
+        this.descricao = produto.getDescricao();
     }
 
     /**
@@ -77,6 +82,11 @@ public class Item {
     */
     public double getPreco() { return preco; }
 
+    /** 
+     * @return double que identifica o preço total do item
+     */
+    public double getPrecoTotal() { return preco * quantidade; }
+
     /**
     * @return double que identifica a quantidade do item
     */
@@ -86,6 +96,11 @@ public class Item {
     * @return int que identifica o código do item
     */
     public int getCodigo() { return codigo; }
+
+    /**
+    * @return String que identifica a descrição do item
+    */
+    public String getDescricao() { return descricao;}
 
     /**
     @param codigo int que identifica o código do item
@@ -111,6 +126,11 @@ public class Item {
     @param quantidade double que identifica a quantidade do item
     */
     public void setQuantidade(double quantidade) { this.quantidade = quantidade; }
+
+     /**
+    @param descricao String que identifica a descricao do item
+    */
+    public void setDescricao(String descricao) { this.descricao = descricao; }
 
     /** 
      * @return String que identifica as informações do item

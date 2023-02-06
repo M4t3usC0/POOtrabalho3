@@ -45,7 +45,7 @@ public class ListaItem {
 
         double total = 0;
         for (Item item : listaItens) {
-            total += item.getPreco();
+            total += item.getPrecoTotal();
         }
         return total;
     }

@@ -55,8 +55,8 @@ public class ControllerRemoverNotaFiscal {
 
     @FXML
     void hoverBtnVoltar(MouseEvent event) {
-        // btnVoltar.setImage(new Image("../../../images/pngVoltarHover.png"));
-        // btnVoltar.setStyle("-fx-cursor: hand;");
+        btnVoltar.setImage(new Image("com\\example\\images\\pngVoltarHover.png"));
+        btnVoltar.setStyle("-fx-cursor: hand;");
     }
 
     @FXML
@@ -76,8 +76,8 @@ public class ControllerRemoverNotaFiscal {
 
     @FXML
     void notHoverBtnVoltar(MouseEvent event) {
-        // btnVoltar.setImage(new Image("../../images/pngVoltar.png"));
-        // btnVoltar.setStyle("-fx-cursor: hand;");
+        btnVoltar.setImage(new Image("com\\example\\images\\pngVoltar.png"));
+        btnVoltar.setStyle("-fx-cursor: hand;");
     }
 
     @FXML

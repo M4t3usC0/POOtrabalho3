@@ -1,6 +1,7 @@
 package com.example.listas;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import com.example.baseclasse.Item;
 import com.example.baseclasse.NotaFiscal;
@@ -76,6 +77,26 @@ public class ListaNotaFiscal implements INotasFiscais {
 			}
 		}
 		throw new RemoveNotaFiscalException("Não foi possível remover a nota fiscal.");
+    }
+
+    public ArrayList<NotaFiscal> getListaNotaFiscal() {
+        return listaNotaFiscal;
+    }
+
+    public ArrayList<NotaFiscal> getNotasFiscaisPorData(Calendar calendar) throws Exception {
+        ArrayList<NotaFiscal> notasFiscais = new ArrayList<NotaFiscal>();
+
+        String data = calendar.get(Calendar.DAY_OF_MONTH) + "/" + calendar.get(Calendar.MONTH) + "/" + calendar.get(Calendar.YEAR);
+
+        for(NotaFiscal notaFiscal : listaNotaFiscal) {
+            if(notaFiscal.getData().equals(calendar)) {
+                notasFiscais.add(notaFiscal);
+            }
+        }
+        if(notasFiscais.size() > 0) {
+            return notasFiscais;
+        }
+        throw new Exception("Não foi possível encontrar notas fiscais com a data: " + data + ".");
     }
 
 }
